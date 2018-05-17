@@ -10,13 +10,7 @@ about: Template for new challenge QA/QC
 - Description:  
 - Required Resources:  
 - Flag:  acsc018{}
-- Guide:
-1. Step 1
-1. Step 2
 
-- Hints:
-1. Hint 1
-1. Hint 2
 
 When you are done with the QA/QC, please enter a comment stating so and how you would rate the difficulty .  If you see any issues please note them in the comment as well.
 
