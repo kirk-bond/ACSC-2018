@@ -9,7 +9,7 @@ about: Template for new challenge QA/QC
 - Category:  
 - Description:  
 - Required Resources:  
-- Flag:  acsc018{}
+- Flag:  acsc18{}
 
 
 When you are done with the QA/QC, please enter a comment stating so and how you would rate the difficulty .  If you see any issues please note them in the comment as well.
