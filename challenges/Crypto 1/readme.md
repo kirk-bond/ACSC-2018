@@ -10,6 +10,9 @@ bkFuZEJhc2V9
 ## Flag
 acsc18{ThisMessageIsInHexDecBinAndBase}
 
+## Category
+Crypto
+
 ## Hints
 1. This isn't actually encrypted
 1. There's four types of encoding here
