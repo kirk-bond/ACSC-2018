@@ -7,6 +7,9 @@ Here is your problem.  Now solve it (This is what is going to be copy and pasted
 ## Flag
 acsc18{YOURFLAG}  (This is the flag that they will have to enter.  Please use this format)
 
+## Category
+What category is this problem
+
 ## Hints
 1. Hint 1
 1. Hint 2
