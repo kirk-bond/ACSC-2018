@@ -56,9 +56,8 @@ int main(int argc, char **argv)
 
     is_flag = decode_secret();
 
+    done:
     if (0 == is_flag) { win(); }
     else { lose(); }
-
-    done:
     exit(is_flag);
 }
