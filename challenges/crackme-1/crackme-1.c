@@ -10,7 +10,7 @@ int win(void)
 {
     printf("you win!\n");
     printf("submit the flag in the form:\n");
-    printf("acsc{<secret>}\n");
+    printf("acsc18{<secret>}\n");
 }
 
 int lose(void)

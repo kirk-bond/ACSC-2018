@@ -4,7 +4,7 @@ How good are you at picking locks? Try your luck here.
 
 ## Flag
 
-acsc{wonphpwvyxnyekmq}
+acsc18{wonphpwvyxnyekmq}
 
 ## Deployment
 
