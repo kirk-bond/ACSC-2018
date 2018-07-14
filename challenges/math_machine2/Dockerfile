@@ -14,7 +14,7 @@ RUN adduser -D -u 1000 -s /bin/bash user && \
 
 # Set up challenge files
 WORKDIR /home/user/
-COPY math_machine.py ./
+COPY math_machine2.py ./
 RUN chown user:user ./*
 
 # Set up the environment
