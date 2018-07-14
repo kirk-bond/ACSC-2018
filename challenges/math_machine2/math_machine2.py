@@ -29,7 +29,7 @@ print 'Socket now listening'
 #Function for handling connections. This will be used to create threads
 def clientthread(conn):
     #Sending message to connected client
-    conn.send('Welcome.  Only computers are allowed to access this server.\nYou have 2 minutes to prove you are a computer\n') #send only takes string
+    conn.send('Think you are good at math? Answer 100 simple problems in 2 minutes and you get your flag.\n') #send only takes string
 
     start_time = time.time()
 
