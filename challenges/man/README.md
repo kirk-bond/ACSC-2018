@@ -25,3 +25,20 @@ Resources Required
     Web Server
     First Born Kid
 
+
+
+if you use docker-compose.ymlfile:
+
+services:
+    varnish:
+        ports:
+            - 80
+            - 6081
+
+You can also specify the host/network port
+
+varnish:
+    ports:
+        - 80:80
+        - 6081:6081
+
