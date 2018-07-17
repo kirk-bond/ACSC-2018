@@ -4,7 +4,7 @@ Did you know man pages have their own markup language?  Check out the man page f
 
 ## Flag
 
-    * acsc18{man_strings_is_a_terrible_Google_image_search}
+    acsc18{man_strings_is_a_terrible_Google_image_search}
 
 ## Category
 
@@ -12,14 +12,14 @@ Did you know man pages have their own markup language?  Check out the man page f
 
 ## Hints
 
-    1.Hint 1: Some markup languages hide comments from display when rendered.
-    1.Hint 2: Try to view the source file
-    1.Hint 3: cat /usr/share/man/man0/strings/h.0p
+1. Hint 1: Some markup languages hide comments from display when rendered.
+1. Hint 2: Try to view the source file
+1. Hint 3: cat /usr/share/man/man0/strings/h.0p
 
 ## Steps
 
-    1.Step 1: man strings (won't display the flag)
-    1.Step 2: cat /usr/share/man/man0/strings.h.0p
+1. Step 1: man strings (won't display the flag)
+1. Step 2: cat /usr/share/man/man0/strings.h.0p
 
 ## Resources Required
 
