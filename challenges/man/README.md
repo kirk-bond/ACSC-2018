@@ -1,29 +1,32 @@
 Problem
 
-Here is your problem. Now solve it (This is what is going to be copy and pasted into the game engine)
+Did you know man pages have their own markup language?  Check out the man page for strings on this alpine linux docker.
+
 Flag
 
-acsc18{YOURFLAG} (This is the flag that they will have to enter. Please use this format)
+    acsc18{man_strings_is_a_terrible_Google_image_search}
+
 Category
 
-What category is this problem
+*Nix Trix
+
 Hints
 
-    Hint 1
-    Hint 2
-    Hint 3
+    Hint 1: Some markup languages hide comments from display when rendered.
+    Hint 2: Try to view the source file
+    Hint 3: cat /usr/share/man/man0/strings/h.0p
 
 Steps
 
-    Step 1
-    Step 2
+    Step 1: man strings (won't display the flag)
+    Step 2 cat /usr/share/man/man0/strings.h.0p
     Step 4
 
 Resources Required
 
-    PCAP File
-    Web Server
-    First Born Kid
+    alpine docker with bash vim nano mdocml-apropos man man-pages docs
+    challenge file
+    timestop-fu
 
 
 
@@ -41,4 +44,3 @@ varnish:
     ports:
         - 80:80
         - 6081:6081
-
