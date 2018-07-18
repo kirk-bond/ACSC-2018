@@ -22,7 +22,10 @@ RUN apk add --update --no-cache bash vim nano mdocml-apropos man man-pages docs 
 WORKDIR /home/user/
 COPY challenge_files/strings.h.0p /usr/share/man/man0/strings.h.0p
 
-# timestomp
+# Allow global read to modified man page
+RUN chmod 644 /usr/share/man/man0/strings.h.0p
+
+# timestomp all the things
 RUN find . -exec touch {} \; &&\
     find /usr/share/man/man0/. -exec touch {} \;
 
