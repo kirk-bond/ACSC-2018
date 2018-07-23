@@ -1,2 +1,3 @@
 crcmod
+flask
 pyelftools

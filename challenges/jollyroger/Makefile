@@ -16,4 +16,5 @@ test: firmware
 	chmod a+x $@
 
 clean:
-	$(RM) kernel firmware test
+	$(RM) kernel firmware test *.pyc
+	$(RM) -r __pycache__

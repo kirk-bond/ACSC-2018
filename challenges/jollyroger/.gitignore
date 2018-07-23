@@ -1,3 +1,5 @@
 kernel
 firmware
 test
+*.pyc
+__pycache__/
