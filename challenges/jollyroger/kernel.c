@@ -13,8 +13,8 @@
 #define debug(fmt, ...)
 #endif
 
-uint32_t cksum1 = 0xdeadbeef;
-uint32_t cksum2 = 0xcafebabe;
+uint32_t cksum1 __attribute__((section (".text"))) = 0xdeadbeef;
+uint32_t cksum2 __attribute__((section (".text"))) = 0xcafebabe;
 
 
 int validate_checksums(void)
@@ -32,35 +32,29 @@ int validate_checksums(void)
     // assume that there are only two LOAD segments
     Elf64_Ehdr *ehdr = (Elf64_Ehdr *)base;
 
-    // find the first PT_LOAD segment
+    // find the text segment (PT_LOAD and RX permissions)
     Elf64_Phdr *phdr = (Elf64_Phdr *)(base + ehdr->e_phoff);
-    while (phdr->p_type != PT_LOAD) {
-        phdr = (Elf64_Phdr *)((intptr_t)phdr + ehdr->e_phentsize);
-    }
-
-    // crc the segment
-    debug("crc32(0, %p, %lx)\n", (void *)phdr->p_vaddr, phdr->p_filesz);
-    uint32_t crc1 = crc32(0, (void *)phdr->p_vaddr, phdr->p_filesz);
-
-    // find the second PT_LOAD segment
-    phdr = (Elf64_Phdr *)((intptr_t)phdr + ehdr->e_phentsize);
-    while (phdr->p_type != PT_LOAD) {
+    for (int i = 0; i < ehdr->e_phnum; i++) {
+        if (phdr->p_type == PT_LOAD && phdr->p_flags == (PF_R | PF_X)) {
+            break;
+        }
         phdr = (Elf64_Phdr *)((intptr_t)phdr + ehdr->e_phentsize);
     }
 
     // crc the segment, skipping cksum1 and cksum2
     size_t len = (intptr_t)&cksum1 - phdr->p_vaddr;
     debug("crc32(0, %p, %lx)\n", (void *)phdr->p_vaddr, len);
-    uint32_t crc2 = crc32(0, (void *)phdr->p_vaddr, len);
+    uint32_t crc1 = crc32(0, (void *)phdr->p_vaddr, len);
     len = (intptr_t)phdr->p_vaddr + phdr->p_filesz - (intptr_t)(&cksum2 + 1);
-    debug("crc32(crc2, %p, %lx)\n", (void *)(&cksum2 + 1), len);
-    crc2 = crc32(crc2, (void *)(&cksum2 + 1), len);
+    debug("crc32(crc1, %p, %lx)\n", (void *)(&cksum2 + 1), len);
+    crc1 = crc32(crc1, (void *)(&cksum2 + 1), len);
 
+    // only verify cksum1 (text segment) since the .got.plt section
+    // was modified during load.
     debug("crc1   = %x\n", crc1);
     debug("cksum1 = %x\n", cksum1);
-    debug("crc2   = %x\n", crc2);
     debug("cksum2 = %x\n", cksum2);
-    if (crc1 != cksum1 || crc2 != cksum2) {
+    if (crc1 != cksum1) {
         return -1;
     }
 

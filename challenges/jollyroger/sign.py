@@ -10,6 +10,7 @@ import ctypes
 import struct
 
 import crcmod.predefined
+from elftools.elf.constants import P_FLAGS
 from elftools.elf.elffile import ELFFile
 
 # magic values in the binary that should be replaced with checksums
@@ -39,23 +40,24 @@ def sign_elf(elf, elfdata):
 
     load_segments = [seg for seg in elf.iter_segments() if seg.header.p_type == "PT_LOAD"]
     assert len(load_segments) == 2
+    assert load_segments[0].header.p_flags == (P_FLAGS.PF_R | P_FLAGS.PF_X)
 
     # calculate the checksum of the first segment
-    crc32 = crcmod.predefined.Crc("crc-32")
-    crc32.update(load_segments[0].data())
-    header.c1_cksum = crc32.crcValue
-    header.c1_offset = elfdata.index(C1_MAGIC)
-
-    # calculate the checksum of the second segment
     # this segment needs to be calculated in two steps since we don't want to
     # include the magic values in the checksum.
-    segdata = load_segments[1].data()
+    segdata = load_segments[0].data()
     assert segdata.count(C1_MAGIC) == 1 and segdata.count(C2_MAGIC) == 1
     c1_magic = segdata.index(C1_MAGIC)
 
     crc32 = crcmod.predefined.Crc("crc-32")
     crc32.update(segdata[:c1_magic])
     crc32.update(segdata[c1_magic + 8:])
+    header.c1_cksum = crc32.crcValue
+    header.c1_offset = c1_magic
+
+    # calculate the checksum of the second segment
+    crc32 = crcmod.predefined.Crc("crc-32")
+    crc32.update(load_segments[1].data())
     header.c2_cksum = crc32.crcValue
     header.c2_offset = elfdata.index(C2_MAGIC)
 
