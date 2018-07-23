@@ -8,7 +8,7 @@ kernel: kernel.c
 	$(CC) $(CFLAGS) -o $@ $^ -lz
 
 firmware: kernel
-	./sign.py -o $@ $<
+	./signtool.py sign -o $@ $<
 
 # test target to strip the custom header off the signed kernel
 test: firmware
