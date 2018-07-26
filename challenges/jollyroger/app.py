@@ -2,8 +2,8 @@ from fcntl import fcntl, F_GETFL, F_SETFL
 import os
 import subprocess
 
-from flask import Flask, flash, redirect, render_template, request, session
-from flask_socketio import SocketIO, disconnect, emit
+from flask import Flask, flash, redirect, render_template, request
+from flask_socketio import SocketIO, emit
 from werkzeug.utils import secure_filename
 
 import signtool
@@ -14,71 +14,86 @@ socketio = SocketIO(app)
 
 PROCESSES = {}
 
-@app.route("/", methods=["GET", "POST"])
-@app.route("/index", methods=["GET", "POST"])
+@app.route("/")
+@app.route("/index")
 def index():
-    if request.method == "POST":
-        if "file" not in request.files:
-            flash("No file part", "warning")
-            return redirect(request.url)
-        image = request.files["file"]
-        if image.filename == "":
-            flash("No selected file", "warning")
-            return redirect(request.url)
-
-        imagedata = image.stream.read()
-        try:
-            signtool.verify_firmware(imagedata)
-        except AssertionError as e:
-            flash("Verify failed: {!s}".format(e), "error")
-            print("Verify failed: {!s} ({:s})".format(e, image.filename))
-            return redirect(request.url)
-        except Excception as e:
-            flash("Unknown verify error", "error")
-            print("Unknown verify error: {!s} ({:s})".format(e, image.filename))
-            return redirect(request.url)
-
-        flash("Verify success! Executing firmware...", "success")
-        print("Verify success! ({:s})".format(image.filename))
-        return redirect(request.url)
-
-    print("GET", id(request), request.remote_addr)
-    proc = subprocess.Popen("echo 'test' && sleep 1 && echo 'test2' && sleep 4 && echo 'test3'", shell=True, stdout=subprocess.PIPE)
-    flags = fcntl(proc.stdout, F_GETFL)
-    fcntl(proc.stdout, F_SETFL, flags | os.O_NONBLOCK)
-    PROCESSES[id(request)] = proc
     return render_template("index.html")
 
 
 @socketio.on("connect")
 def on_connect():
-    print("connect", id(request), request.sid, request.remote_addr)
+    print("connect", request.sid, request.remote_addr)
 
 
 @socketio.on("disconnect")
 def on_disconnect():
-    print("disconnect", id(request), request.sid, request.remote_addr)
-    proc = PROCESSES.get(id(request))
+    print("disconnect", request.sid, request.remote_addr)
+    proc = PROCESSES.get(request.sid)
     if proc is not None:
         proc.kill()
-        del PROCESSES[id(request)]
+        del PROCESSES[request.sid]
+
+
+@socketio.on("upload")
+def on_upload(imagedata):
+    print("upload", request.sid, request.remote_addr, len(imagedata))
+    imagedata = imagedata.encode()
+
+    # kill any existing processes associated with this connection
+    proc = PROCESSES.get(request.sid)
+    if proc is not None:
+        proc.kill()
+        del PROCESSES[request.sid]
+
+    # start a new session - this will clear the terminal
+    emit("start-session")
+
+    # try to verify the uploaded firmware
+    try:
+        signtool.verify_firmware(imagedata)
+    except AssertionError as e:
+        emit("console", "Verify failed: {!s}".format(e))
+        emit("stop-session")
+        print("Verify failed: {!s}".format(e))
+        return
+    except Excception as e:
+        emit("console", "Unknown verify error")
+        emit("stop-session")
+        print("Unknown verify error: {!s}".format(e))
+        return
+
+    emit("console", "Verify success! Executing firmware...")
+    print("Verify success!")
+
+    # firmware verified successfully - drop to disk and execute
+    proc = subprocess.Popen("echo 'test' && sleep 1 && echo 'test2' && sleep 4 && echo 'test3'", shell=True, stdout=subprocess.PIPE)
+    flags = fcntl(proc.stdout, F_GETFL)
+    fcntl(proc.stdout, F_SETFL, flags | os.O_NONBLOCK)
+    PROCESSES[request.sid] = proc
 
 
 @socketio.on("update")
 def on_update():
-    print("update", id(request), request.sid, request.remote_addr)
-    proc = PROCESSES.get(id(request))
-    if proc is not None:
-        try:
-            data = os.read(proc.stdout.fileno(), 1024)
-            data = data.replace(b"\n", b"\r\n")
-            print(data)
-            if data:
-                emit("console", {"data": data.decode("utf-8")})
-            else:
-                disconnect()
-        except OSError:
-            pass    # no data
+    print("update", request.sid, request.remote_addr)
+
+    # there should always be a process for this request. If not, someone is
+    # poking our websocket interface.
+    proc = PROCESSES.get(request.sid)
+    if proc is None:
+        emit("stop-session")
+        return
+
+    # try to read data from the process and send it to the client.
+    try:
+        data = os.read(proc.stdout.fileno(), 1024)
+        data = data.replace(b"\n", b"\r\n")
+        print(data)
+        if data:
+            emit("console", data.decode("utf-8"))
+        else:
+            emit("stop-session")    # process finished
+    except OSError:
+        pass    # no data
 
 
 if __name__ == "__main__":

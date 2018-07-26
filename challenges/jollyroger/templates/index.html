@@ -25,35 +25,15 @@
 
 <body>
   <div class="container">
-
     <h1>Upload a firmware file</h1>
-    <form method=post enctype=multipart/form-data>
-      <div class="form-group">
-        <label for="file">File:</label>
-        <input type=file class=form-control-file" id="file", name=file>
-      </div>
-      <button type=submit class="btn btn-success">Upload</button>
-    </form>
 
+    <div class="form-group">
+      <label for="filebox">File:</label><input type="file" id="filebox"><br>
+      <button type="button" id="uploadbtn" class="btn btn-success">Upload</button>
+    </div>
     <br>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          {% if category == "error" %}
-            <div class="alert alert-danger">
-          {% elif category == "warning" %}
-            <div class="alert alert-warning">
-          {% elif category == "success" %}
-            <div class="alert alert-success">
-          {% else %}
-            <div class="alert alert-info">
-          {% endif %}
-            {{ message }}
-            </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
 
+    <div id=message></div>
   </div>
 
   <div class="container-fluid">
@@ -63,22 +43,57 @@
       term.open(document.getElementById("terminal"));
 
       var socket = io.connect();
+      var update_interval;
 
-      socket.on("console", function(msg) {
-        term.write(msg.data);
+      socket.on("start-session", function() {
+        term.reset();
+        update = setInterval(function() {
+          socket.emit("update");
+        }, 200);
       });
 
-      var update = setInterval(function() {
-        socket.emit("update");
-      }, 200);
+      socket.on("stop-session", function() {
+        clearInterval(update);
+      });
+
+      socket.on("console", function(msg) {
+        term.write(msg);
+      });
 
       socket.on("disconnect", function() {
         clearInterval(update);
         socket.close()
       });
+
+      $("#uploadbtn").click(function() {
+        var files = $("#filebox")[0].files;
+        if (files.length == 0) {
+            $("#message").removeClass();
+            $("#message").addClass("alert alert-danger");
+            $("#message").text("No file selected");
+            return;
+        }
+
+        if (files[0].size > 1024 * 1024) {
+            $("#message").removeClass();
+            $("#message").addClass("alert alert-danger");
+            $("#message").text("File too large (max size: 1MB)");
+            return;
+        }
+
+        var reader = new FileReader();
+        reader.onload = (function(e) {
+          socket.emit("upload", reader.result);
+          $("#message").text("Uploaded \"" + files[0].name + "\" (" + files[0].size + " bytes)");
+        });
+
+        $("#message").removeClass()
+        $("#message").addClass("alert alert-success");
+        $("#message").text("Uploading \"" + files[0].name + "\" (" + files[0].size + " bytes)");
+
+        reader.readAsBinaryString(files[0])
+      });
     </script>
   </div>
-
 </body>
-
 </html>
