@@ -2,6 +2,10 @@
 <head>
   <title>Secure Upload Service</title>
 
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- bootstrap -->
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -11,8 +15,12 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+  <!-- xterm.js -->
   <link rel="stylesheet" href="static/xterm.css">
   <script src="static/xterm.js"></script>
+
+  <!-- socket.io -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
 </head>
 
 <body>
@@ -54,13 +62,20 @@
       var term = new Terminal();
       term.open(document.getElementById("terminal"));
 
-      // test output scrolling and display (24x80 terminal)
-      term.write("Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ");
-      term.write("a".repeat(175));
-      term.writeln("");
-      for (i = 0; i < 35; i++) {
-        term.writeln(i + ": test output");
-      }
+      var socket = io.connect();
+
+      socket.on("console", function(msg) {
+        term.write(msg.data);
+      });
+
+      var update = setInterval(function() {
+        socket.emit("update");
+      }, 200);
+
+      socket.on("disconnect", function() {
+        clearInterval(update);
+        socket.close()
+      });
     </script>
   </div>
 
