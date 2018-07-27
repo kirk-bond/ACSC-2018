@@ -47,13 +47,14 @@
 
       socket.on("start-session", function() {
         term.reset();
-        update = setInterval(function() {
+        clearInterval(update_interval);
+        update_interval = setInterval(function() {
           socket.emit("update");
         }, 200);
       });
 
       socket.on("stop-session", function() {
-        clearInterval(update);
+        clearInterval(update_interval);
       });
 
       socket.on("console", function(msg) {
@@ -61,7 +62,7 @@
       });
 
       socket.on("disconnect", function() {
-        clearInterval(update);
+        clearInterval(update_interval);
         socket.close()
       });
 
@@ -91,7 +92,7 @@
         $("#message").addClass("alert alert-success");
         $("#message").text("Uploading \"" + files[0].name + "\" (" + files[0].size + " bytes)");
 
-        reader.readAsBinaryString(files[0])
+        reader.readAsArrayBuffer(files[0])
       });
     </script>
   </div>
