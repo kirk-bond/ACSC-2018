@@ -8,7 +8,11 @@ Prepend a binary blob to the ELF with some metadata.
 import argparse
 import ctypes
 import io
+import os
 import struct
+import subprocess
+import sys
+import time
 
 import crcmod.predefined
 from elftools.elf.constants import P_FLAGS
@@ -29,6 +33,48 @@ class ElfHeader(ctypes.Structure):
                 ("c2_offset",  ctypes.c_uint32),
                 ("c2_cksum",   ctypes.c_uint32),
                 ("pad",        ctypes.c_uint32)]
+
+
+def sign_elf(elf, elfdata):
+    """Sign an ELF file.
+
+    Generate a proprietary header by checksumming ELF segments and embedding the
+    checksums at the appropriate offsets.
+    """
+
+    header = ElfHeader()
+    header.magic = 0x05b1adba   # baadb105 with swapped endianness
+    header.version = 1
+    header.num_cksums = 2
+
+    load_segments = [seg for seg in elf.iter_segments() if seg.header.p_type == "PT_LOAD"]
+    assert len(load_segments) == 2
+    assert load_segments[0].header.p_flags == (P_FLAGS.PF_R | P_FLAGS.PF_X)
+
+    # calculate the checksum of the first segment
+    # this segment needs to be calculated in two steps since we don't want to
+    # include the magic values in the checksum.
+    segdata = load_segments[0].data()
+    assert segdata.count(C1_MAGIC) == 1 and segdata.count(C2_MAGIC) == 1
+    c1_magic = segdata.index(C1_MAGIC)
+
+    crc32 = crcmod.predefined.Crc("crc-32")
+    crc32.update(segdata[:c1_magic])
+    crc32.update(segdata[c1_magic + 8:])
+    header.c1_cksum = crc32.crcValue
+    header.c1_offset = c1_magic
+
+    # calculate the checksum of the second segment
+    crc32 = crcmod.predefined.Crc("crc-32")
+    crc32.update(load_segments[1].data())
+    header.c2_cksum = crc32.crcValue
+    header.c2_offset = elfdata.index(C2_MAGIC)
+
+    # replace magic values with the checksum for runtime integrity checking
+    elfdata = elfdata.replace(C1_MAGIC, struct.pack("<I", header.c1_cksum))
+    elfdata = elfdata.replace(C2_MAGIC, struct.pack("<I", header.c2_cksum))
+
+    return bytes(header) + elfdata
 
 
 def verify_firmware(firmware):
@@ -81,42 +127,44 @@ def verify_firmware(firmware):
     assert crc32.crcValue == header.c2_cksum, "Image corrupted"
 
 
-def sign_elf(elf, elfdata):
-    """Generate a proprietary header by checksumming ELF segments and embedding the
-        checksums at the appropriate offsets."""
-    header = ElfHeader()
-    header.magic = 0x05b1adba   # baadb105 with swapped endianness
-    header.version = 1
-    header.num_cksums = 2
+def run_firmware(imagepath):
+    """Simulate the loading and execution of a firmware image.
 
-    load_segments = [seg for seg in elf.iter_segments() if seg.header.p_type == "PT_LOAD"]
-    assert len(load_segments) == 2
-    assert load_segments[0].header.p_flags == (P_FLAGS.PF_R | P_FLAGS.PF_X)
+    Simulate the bootloader by validating the firmware. If valid, execute it
+    in an nsjail container.
+    """
 
-    # calculate the checksum of the first segment
-    # this segment needs to be calculated in two steps since we don't want to
-    # include the magic values in the checksum.
-    segdata = load_segments[0].data()
-    assert segdata.count(C1_MAGIC) == 1 and segdata.count(C2_MAGIC) == 1
-    c1_magic = segdata.index(C1_MAGIC)
+    with open(imagepath, "rb") as f:
+        imagedata = f.read()
 
-    crc32 = crcmod.predefined.Crc("crc-32")
-    crc32.update(segdata[:c1_magic])
-    crc32.update(segdata[c1_magic + 8:])
-    header.c1_cksum = crc32.crcValue
-    header.c1_offset = c1_magic
+    print("[boot] Booting from flash...", flush=True)
+    print("[boot] bootloader version: 1.0.42", flush=True)
+    print("[boot] validating firmware image", end="", flush=True)
+    for i in range(5):
+        print(".", end="", flush=True)
+        time.sleep(1)
+    print("", flush=True)
 
-    # calculate the checksum of the second segment
-    crc32 = crcmod.predefined.Crc("crc-32")
-    crc32.update(load_segments[1].data())
-    header.c2_cksum = crc32.crcValue
-    header.c2_offset = elfdata.index(C2_MAGIC)
+    try:
+        verify_firmware(imagedata)
+    except AssertionError as e:
+        print("[boot] Verify failed! {!s}".format(e))
+        return
+    except Exception:
+        print("[boot] Verify failed! Unknown error")
+        return
 
-    # replace magic values with the checksum for runtime integrity checking
-    elfdata = elfdata.replace(C1_MAGIC, struct.pack("<I", header.c1_cksum))
-    elfdata = elfdata.replace(C2_MAGIC, struct.pack("<I", header.c2_cksum))
+    print("[boot] Verify success!", flush=True)
+    print("[boot] Starting kernel", flush=True)
+    time.sleep(2)
 
-    return bytes(header) + elfdata
+    # strip the header and start the kernel
+    elf = imagedata[ctypes.sizeof(ElfHeader):]
+    with open(imagepath, "wb") as f:
+        f.write(elf)
+    os.chmod(imagepath, 0o755)
+    subprocess.call([imagepath])
+    sys.stdout.flush()
 
 
 def main():
@@ -127,8 +175,11 @@ def main():
     signparser.add_argument("elf", help="Path to ELF to sign")
     signparser.add_argument("-o", "--output", default="firmware", help="Output file name")
 
-    verifyparser = subparsers.add_parser("verify", help="Verify an ELF file")
+    verifyparser = subparsers.add_parser("verify", help="Verify a firmware image")
     verifyparser.add_argument("image", help="Path to a firmware image to verify")
+
+    runparser = subparsers.add_parser("run", help="Run a firmware image")
+    runparser.add_argument("image", help="Path to a firmware image to run")
 
     args = parser.parse_args()
 
@@ -154,6 +205,9 @@ def main():
         except Exception as e:
             print("[-] Unknown verify error: {!s}".format(e))
             raise
+
+    elif args.action == "run":
+        run_firmware(args.image)
 
 
 if __name__ == "__main__":

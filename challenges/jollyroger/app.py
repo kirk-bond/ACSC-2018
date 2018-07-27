@@ -1,18 +1,17 @@
-from fcntl import fcntl, F_GETFL, F_SETFL
+import fcntl
 import os
 import subprocess
+import tempfile
 
-from flask import Flask, flash, redirect, render_template, request
+from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
-from werkzeug.utils import secure_filename
-
-import signtool
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = b"f6bd38bacb77fa4dc5f35c963109bbdf0f70454ca935123a"
-socketio = SocketIO(app)
+socketio = SocketIO(app, binary=True)
 
 PROCESSES = {}
+
 
 @app.route("/")
 @app.route("/index")
@@ -32,43 +31,34 @@ def on_disconnect():
     if proc is not None:
         proc.kill()
         del PROCESSES[request.sid]
+        if os.path.isfile(proc.args[2]):
+            os.unlink(proc.args[2])
 
 
 @socketio.on("upload")
 def on_upload(imagedata):
     print("upload", request.sid, request.remote_addr, len(imagedata))
-    imagedata = imagedata.encode()
 
     # kill any existing processes associated with this connection
     proc = PROCESSES.get(request.sid)
     if proc is not None:
         proc.kill()
         del PROCESSES[request.sid]
+        if os.path.isfile(proc.args[2]):
+            os.unlink(proc.args[2])
 
     # start a new session - this will clear the terminal
     emit("start-session")
 
-    # try to verify the uploaded firmware
-    try:
-        signtool.verify_firmware(imagedata)
-    except AssertionError as e:
-        emit("console", "Verify failed: {!s}".format(e))
-        emit("stop-session")
-        print("Verify failed: {!s}".format(e))
-        return
-    except Excception as e:
-        emit("console", "Unknown verify error")
-        emit("stop-session")
-        print("Unknown verify error: {!s}".format(e))
-        return
+    # drop to disk and execute the simulated bootloader with unbuffered stdout
+    fd, imagepath = tempfile.mkstemp(suffix=".img", prefix="jr_")
+    os.close(fd)
+    with open(imagepath, "wb") as f:
+        f.write(imagedata)
 
-    emit("console", "Verify success! Executing firmware...")
-    print("Verify success!")
-
-    # firmware verified successfully - drop to disk and execute
-    proc = subprocess.Popen("echo 'test' && sleep 1 && echo 'test2' && sleep 4 && echo 'test3'", shell=True, stdout=subprocess.PIPE)
-    flags = fcntl(proc.stdout, F_GETFL)
-    fcntl(proc.stdout, F_SETFL, flags | os.O_NONBLOCK)
+    proc = subprocess.Popen(["./signtool.py", "run", imagepath], stdout=subprocess.PIPE)
+    flags = fcntl.fcntl(proc.stdout, fcntl.F_GETFL)
+    fcntl.fcntl(proc.stdout, fcntl.F_SETFL, flags | os.O_NONBLOCK)
     PROCESSES[request.sid] = proc
 
 
@@ -92,6 +82,9 @@ def on_update():
             emit("console", data.decode("utf-8"))
         else:
             emit("stop-session")    # process finished
+            del PROCESSES[request.sid]
+            if os.path.isfile(proc.args[2]):
+                os.unlink(proc.args[2])
     except OSError:
         pass    # no data
 
