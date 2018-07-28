@@ -20,7 +20,6 @@ from elftools.elf.elffile import ELFFile
 
 # magic values in the binary that should be replaced with checksums
 C1_MAGIC = struct.pack("<I", 0xdeadbeef)
-C2_MAGIC = struct.pack("<I", 0xcafebabe)
 
 
 class ElfHeader(ctypes.Structure):
@@ -30,9 +29,9 @@ class ElfHeader(ctypes.Structure):
                 ("num_cksums", ctypes.c_uint32),    # always 2
                 ("c1_offset",  ctypes.c_uint32),    # offset to store cksum in ELF
                 ("c1_cksum",   ctypes.c_uint32),    # calculated cksum
-                ("c2_offset",  ctypes.c_uint32),
-                ("c2_cksum",   ctypes.c_uint32),
-                ("pad",        ctypes.c_uint32)]
+                ("pad1",       ctypes.c_uint32),
+                ("pad2",       ctypes.c_uint32),
+                ("pad3",       ctypes.c_uint32)]
 
 
 def sign_elf(elf, elfdata):
@@ -45,7 +44,7 @@ def sign_elf(elf, elfdata):
     header = ElfHeader()
     header.magic = 0x05b1adba   # baadb105 with swapped endianness
     header.version = 1
-    header.num_cksums = 2
+    header.num_cksums = 1
 
     load_segments = [seg for seg in elf.iter_segments() if seg.header.p_type == "PT_LOAD"]
     assert len(load_segments) == 2
@@ -55,24 +54,17 @@ def sign_elf(elf, elfdata):
     # this segment needs to be calculated in two steps since we don't want to
     # include the magic values in the checksum.
     segdata = load_segments[0].data()
-    assert segdata.count(C1_MAGIC) == 1 and segdata.count(C2_MAGIC) == 1
+    assert segdata.count(C1_MAGIC) == 1
     c1_magic = segdata.index(C1_MAGIC)
 
     crc32 = crcmod.predefined.Crc("crc-32")
     crc32.update(segdata[:c1_magic])
-    crc32.update(segdata[c1_magic + 8:])
+    crc32.update(segdata[c1_magic+4:])
     header.c1_cksum = crc32.crcValue
     header.c1_offset = c1_magic
 
-    # calculate the checksum of the second segment
-    crc32 = crcmod.predefined.Crc("crc-32")
-    crc32.update(load_segments[1].data())
-    header.c2_cksum = crc32.crcValue
-    header.c2_offset = elfdata.index(C2_MAGIC)
-
     # replace magic values with the checksum for runtime integrity checking
     elfdata = elfdata.replace(C1_MAGIC, struct.pack("<I", header.c1_cksum))
-    elfdata = elfdata.replace(C2_MAGIC, struct.pack("<I", header.c2_cksum))
 
     return bytes(header) + elfdata
 
@@ -91,7 +83,7 @@ def verify_firmware(firmware):
     # verify the header
     assert header.magic == 0x05b1adba, "Invalid header"
     assert header.version == 1, "Invalid header"
-    assert header.num_cksums == 2, "Invalid header"
+    assert header.num_cksums == 1, "Invalid header"
 
     # verify the header checksums and offsets are consistent and fall within
     # the right segments
@@ -104,27 +96,18 @@ def verify_firmware(firmware):
     assert seg.header.p_flags == (P_FLAGS.PF_R | P_FLAGS.PF_X), "Invalid header"
     assert header.c1_offset >= seg.header.p_offset, "Invalid header"
     assert header.c1_offset < seg.header.p_offset + seg.header.p_filesz, "Invalid header"
-    assert header.c2_offset >= seg.header.p_offset, "Invalid header"
-    assert header.c2_offset < seg.header.p_offset + seg.header.p_filesz, "Invalid header"
-    assert header.c2_offset == header.c1_offset + 4, "Invalid header"
 
     # verify the header checksums match the embedded checksums
     c1_embedded = elfdata[header.c1_offset:header.c1_offset+4]
-    c2_embedded = elfdata[header.c2_offset:header.c2_offset+4]
     assert header.c1_cksum == struct.unpack("<I", c1_embedded)[0], "Invalid header or image corrupted"
-    assert header.c2_cksum == struct.unpack("<I", c2_embedded)[0], "Invalid header or image corrupted"
 
     # recalculate and verify the checksums
     segdata = load_segments[0].data()
     c1_idx = header.c1_offset - load_segments[0].header.p_offset
     crc32 = crcmod.predefined.Crc("crc-32")
     crc32.update(segdata[:c1_idx])
-    crc32.update(segdata[c1_idx + 8:])
+    crc32.update(segdata[c1_idx + 4:])
     assert crc32.crcValue == header.c1_cksum, "Image corrupted"
-
-    crc32 = crcmod.predefined.Crc("crc-32")
-    crc32.update(load_segments[1].data())
-    assert crc32.crcValue == header.c2_cksum, "Image corrupted"
 
 
 def run_firmware(imagepath):

@@ -19,10 +19,10 @@ Reverse Engineering
 
 1. The header is 32 bytes long, followed by an ELF file.
 2. They're using a generic crc32 checksum to verify data integrity.
-3. There are two checksums, each present in both the header and the body of the
+3. There is only one checksum, present in both the header and the body of the
    image.
-4. The two load segments of the ELF are being checksummed. It looks like some
-   bytes of the code segment are being skipped.
+4. The code segment of the ELF is being checksummed. It looks like some bytes of
+   the code segment are being skipped.
 5. The structure of the proprietary header is:
 
     struct header {
@@ -31,9 +31,7 @@ Reverse Engineering
         uint32_t num_cksums;
         uint32_t c1_offset;
         uint32_t c1_cksum;
-        uint32_t c2_offset;
-        uint32_t c2_cksum;
-        uint32_t pad;
+        uint8_t  pad[12];
     };
 
 ## Steps
@@ -44,13 +42,13 @@ Reverse Engineering
 3. Reverse engineer the ELF file. Recognize that if the firmware version is
    changed to "jollyroger", it will print the flag.
 4. Reverse the checksum computation to determine that it's computing a crc32 of
-   the text segment, skipping 8 bytes in the middle of the segment (the two
-   embedded checksums). Realize that these bytes that are being skipped are also
-   in the custom header.
+   the text segment, skipping 4 bytes in the middle of the segment (the embedded
+   checksum). Realize that these bytes that are being skipped are also in the
+   custom header.
 5. Patch the version string to "jollyroger".
-6. Recompute the checksum of the text segment and the data segment.
-7. Replace the embedded checksums and the header checksums with the new
-   recomputed ones.
+6. Recompute the checksum of the code segment.
+7. Replace the embedded checksum and the header checksum with the new recomputed
+   one.
 8. Upload the file for a flag.
 
 ## Resources Required

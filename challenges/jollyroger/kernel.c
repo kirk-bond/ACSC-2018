@@ -19,7 +19,6 @@ char VERSION_STR[] __attribute__((section (".text"))) = "SecureSystems Kernel 3.
 //char VERSION_STR[] __attribute__((section (".text"))) = "jollyroger";
 
 uint32_t cksum1 __attribute__((section (".text"))) = 0xdeadbeef;
-uint32_t cksum2 __attribute__((section (".text"))) = 0xcafebabe;
 
 
 int validate_checksums(void)
@@ -48,13 +47,13 @@ int validate_checksums(void)
 
     usleep(500 * 1000);
 
-    // crc the segment, skipping cksum1 and cksum2
+    // crc the segment, skipping cksum1
     size_t len = (intptr_t)&cksum1 - phdr->p_vaddr;
     debug("crc32(0, %p, %lx)\n", (void *)phdr->p_vaddr, len);
     uint32_t crc1 = crc32(0, (void *)phdr->p_vaddr, len);
-    len = (intptr_t)phdr->p_vaddr + phdr->p_filesz - (intptr_t)(&cksum2 + 1);
-    debug("crc32(crc1, %p, %lx)\n", (void *)(&cksum2 + 1), len);
-    crc1 = crc32(crc1, (void *)(&cksum2 + 1), len);
+    len = (intptr_t)phdr->p_vaddr + phdr->p_filesz - (intptr_t)(&cksum1 + 1);
+    debug("crc32(crc1, %p, %lx)\n", (void *)(&cksum1 + 1), len);
+    crc1 = crc32(crc1, (void *)(&cksum1 + 1), len);
 
     usleep(500 * 1000);
 
@@ -62,7 +61,6 @@ int validate_checksums(void)
     // was modified during load.
     debug("crc1   = %x\n", crc1);
     debug("cksum1 = %x\n", cksum1);
-    debug("cksum2 = %x\n", cksum2);
     if (crc1 != cksum1) {
         return -1;
     }
