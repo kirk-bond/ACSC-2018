@@ -156,14 +156,24 @@ def run_firmware(imagepath):
 
     print("[boot] Verify success!", flush=True)
     print("[boot] Starting kernel", flush=True)
-    time.sleep(2)
+    time.sleep(1)
 
-    # strip the header and start the kernel
+    # strip the header and start the kernel under nsjail
     elf = imagedata[ctypes.sizeof(ElfHeader):]
     with open(imagepath, "wb") as f:
         f.write(elf)
     os.chmod(imagepath, 0o755)
-    subprocess.call([imagepath])
+    subprocess.call(["nsjail", "-Mo",
+                         "--chroot", "/",
+                         "--user", "99999",
+                         "--group", "99999",
+                         "--time_limit", "30",
+                         "--max_cpus", "1",
+                         "--rlimit_cpu", "30",
+                         "--rlimit_fsize", "0",
+                         "--rlimit_nproc", "0",
+                         "--disable_clone_newcgroup",
+                         "--", imagepath])
     sys.stdout.flush()
 
 
