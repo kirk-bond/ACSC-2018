@@ -90,7 +90,7 @@ int main(void)
 
     printf("(kernel) Kernel version: %s\n", VERSION_STR);
     if (strcmp(VERSION_STR, "jollyroger") == 0) {
-        fd = open("/flag", O_RDONLY);
+        fd = open("/flag.txt", O_RDONLY);
         if (fd >= 0) {
             read(fd, buf, sizeof(buf) - 1);
             printf("(kernel) %s\n", buf);
