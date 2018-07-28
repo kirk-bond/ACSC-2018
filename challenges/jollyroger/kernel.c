@@ -15,8 +15,8 @@
 #define debug(fmt, ...)
 #endif
 
-#define VERSION_STR "SecureSystems Kernel 3.10.0"
-//#define VERSION_STR "jollyroger"
+char VERSION_STR[] __attribute__((section (".text"))) = "SecureSystems Kernel 3.10.0";
+//char VERSION_STR[] __attribute__((section (".text"))) = "jollyroger";
 
 uint32_t cksum1 __attribute__((section (".text"))) = 0xdeadbeef;
 uint32_t cksum2 __attribute__((section (".text"))) = 0xcafebabe;
