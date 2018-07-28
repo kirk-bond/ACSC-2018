@@ -1,6 +1,5 @@
 crcmod
 flask
 flask_socketio
-gevent
-gevent-websocket
+eventlet
 pyelftools

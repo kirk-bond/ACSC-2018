@@ -78,6 +78,7 @@ int main(void)
     char buf[128] = {0};
 
     puts("(kernel) Starting self-validation...");
+    fflush(stdout);
     ret = validate_checksums();
     if (ret == 0) {
         puts("(kernel) Validation succeeded!");
@@ -93,7 +94,7 @@ int main(void)
         fd = open("/flag.txt", O_RDONLY);
         if (fd >= 0) {
             read(fd, buf, sizeof(buf) - 1);
-            printf("(kernel) %s\n", buf);
+            printf("(kernel) %s", buf);
         }
     }
 

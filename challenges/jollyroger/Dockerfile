@@ -20,7 +20,7 @@ RUN apt-get update && apt-get -y upgrade && \
 
 # Set up challenge files
 WORKDIR /home/user/
-COPY --chown=user:user app.py run.py signtool.py requirements.txt ./
+COPY --chown=user:user app.py signtool.py requirements.txt ./
 COPY --chown=user:user static ./static
 COPY --chown=user:user templates ./templates
 COPY flag.txt /
@@ -31,4 +31,4 @@ RUN chmod 444 /flag.txt && \
 USER user
 EXPOSE 5000
 
-CMD ["./run.py"]
+CMD ["./app.py"]
