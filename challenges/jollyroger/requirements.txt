@@ -1,0 +1,5 @@
+crcmod
+flask
+flask_socketio
+eventlet
+pyelftools

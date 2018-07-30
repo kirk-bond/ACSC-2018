@@ -1,0 +1,6 @@
+kernel
+firmware
+firmware.jr
+test
+*.pyc
+__pycache__/
