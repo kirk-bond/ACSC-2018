@@ -35,4 +35,4 @@ See `solve.py`.
 
 ## Resources Required
 
-* None
+* Just the file (dsp_2.iq)
