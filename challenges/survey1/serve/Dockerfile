@@ -1,4 +1,4 @@
-
+ser
 #####################################
 #                                   #
 # serve CTF Challeng Dockerfile     #
@@ -22,7 +22,7 @@ RUN apk add --update --no-cache bash \
   
 # Copy challenge files 
 WORKDIR /data/serve
-COPY .serve.py /data/serve
+COPY serve.py /data/serve
 
 # Run server
 RUN /data/jail python /data/serve/serve.py 127.0.0.1 8000
