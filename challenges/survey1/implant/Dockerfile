@@ -23,7 +23,8 @@ RUN apk add --update --no-cache bash \
         nmap \
         libcap \
   && adduser -D -u 1001 -s /bin/bash user \
-  && chmod u+s /usr/sbin/tcpdump
+  && chmod u+s /usr/sbin/tcpdump \
+  && chmod u+s /usr/bin/nmap
   
 # Set landing point
 WORKDIR /home/user
