@@ -1,10 +1,10 @@
 ## Problem
 
-Did you know man pages have their own markup language?  Check out the man page for strings on this alpine linux docker.
+Do you know all the things 'Strings' is capable of?  Well, maybe not on all OS, but on this one.
 
 ## Flag
 
-    acsc18{man_strings_is_a_terrible_Google_image_search}
+    acsc18{man_strings_ftw}
 
 ## Category
 
@@ -12,35 +12,16 @@ Did you know man pages have their own markup language?  Check out the man page f
 
 ## Hints
 
-1. Hint 1: Some markup languages hide comments from display when rendered.
-1. Hint 2: Try to view the source file
-1. Hint 3: cat /usr/share/man/man0/strings/h.0p
+1. Hint 1: Man, that problem statement was not much to go off of!
+1. Hint 2: How do you find out more about a program?  Sometimes --help, but not here.
+1. Hint 3: man strings
 
 ## Steps
 
-1. Step 1: man strings (won't display the flag)
-1. Step 2: cat /usr/share/man/man0/strings.h.0p
+1. Step 1: man strings (flag is displayed)
 
 ## Resources Required
 
     alpine docker with bash vim nano mdocml-apropos man man-pages docs
     challenge file
     timestop-fu
-
-
-```
-if you use docker-compose.ymlfile:
-
-services:
-    varnish:
-        ports:
-            - 80
-            - 6081
-
-You can also specify the host/network port
-
-varnish:
-    ports:
-        - 80:80
-        - 6081:6081
-```
