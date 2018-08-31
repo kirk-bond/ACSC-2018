@@ -1,13 +1,13 @@
-#####################################
-#                                   #
-# survey1 CTF Challeng Dockerfile   #
-#                                   #
-# Kirk Bond- 07 AUG 18              #
-#                                   #
-# Env setup                         #
-#    !!use docker-compose!!         #
-#                                   #
-#####################################
+###########################################################
+#                                                         #
+# survey1 CTF Challeng Dockerfile                         #
+#                                                         #
+# Kirk Bond- 07 AUG 18                                    #
+#                                                         #
+# Env setup                                               #
+#   docker run -it --rm --network=survey1_target implant  #
+#                                                         #
+###########################################################
 
 # use a small nix docker
 FROM alpine
