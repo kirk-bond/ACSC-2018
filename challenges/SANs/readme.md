@@ -27,3 +27,5 @@ Forensics
 
 ## Resources Required
 * 2018 SANS Security Awareness Report.pdf
+
+based on https://github.com/krx/CTF-Writeups/tree/master/CSAW%2015%20Finals/for300%20-%20Mandiant
