@@ -25,3 +25,4 @@ Web Exploit
 * MySQL server
 
 ###Note:  Must use the docker-compose function to get this to work.  Once it's up and running, navigate to installer.php to finish setup and the disable/reenable all plugins.
+wordpress user:  admin  password:  vH5OvOIOiKAi@EJJ!F
