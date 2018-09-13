@@ -2,7 +2,7 @@ Please place all of your challenges in here in their own individual folders.  Pl
 
 ## Problem
 
-Join us on the ACSC Slack server to get updates on what's going on as well as help from mentors.  You can join us by going to <Insert join instructions here>
+Join us on the ACSC Slack server to get updates on what's going on as well as help from mentors.  You can join us by going to https://bit.ly/2N9XatQ
 
 ## Flag
 acsc18{DontSlackOff}
