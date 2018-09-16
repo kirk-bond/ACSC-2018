@@ -8,11 +8,11 @@
 #   docker run -it --rm -p 5000:5000 feelinglucky
 ####
 
-FROM alpine
+FROM ubuntu:latest 
 
 # Update and set up environment
-RUN apk add --update --no-cache bash vim nano && \
-adduser -D -u 1001 -s /bin/bash user
+RUN apt-get update && apt-get -y install bash vim nano && \
+adduser --disabled-password --uid 1001 --shell /bin/bash user
 
 # Set up challenge files
 WORKDIR /home/user/
