@@ -1,5 +1,5 @@
 ## Problem
-Another section is in need of help looking for a potenitally rogue system and all they have is a MAC of 00:0c:29:61:c1:89. We informed them we may be able to find it in our traffic captures but can't make any promises.
+Another section is in need of help looking for a potenitally rogue system and all they have is a MAC of 00:0c:29:61:c1:89. We informed them we may be able to assist them in finding the computername of the system tied in our traffic captures but we can't make any promises.<br><br>
 **NOTE:  Be sure to submit the flag in the correct format ( acsc18{YourFlag} )**
 
 ## Flag
