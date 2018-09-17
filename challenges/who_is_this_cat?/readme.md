@@ -16,7 +16,7 @@ Forensics
 1. Open the PCAP file
 1. Search for "nbns && eth.addr == 00:0c:29:61:c1:89"
 1. Looking in any of those packets under NetBIOS Name Service -> Queries will render the answer
-1. Flag still needs to be submitted correctly as acsc18{WalaWala}
+1. Flag still needs to be submitted correctly as acsc18{ROCKETMAN-PC}
 
 ## Resources Required
 * PCAP File
