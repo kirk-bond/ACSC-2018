@@ -1,14 +1,14 @@
-# recursion / recursion2
+# Compiler Voodoo / Compiler Voodoo 2
 
-This source directory produces two problems. recursion2 is a more difficult
+This source directory produces two problems. voodoo2 is a more difficult
 version of the first. Each should have the same prompt.
 
 Get the password and submit it for points.
 
 ## Flag
 
-recursion: `acsc18{llvm_is_better_than_gcc}`
-recursion2: `acsc18{one_inst_allowed_per_bb}`
+voodoo1: `acsc18{llvm_is_better_than_gcc}`
+voodoo2: `acsc18{one_inst_allowed_per_bb}`
 
 ## Category
 
@@ -31,7 +31,7 @@ making it harder to understand true control flow and masking function
 boundaries. As a side effect of this transformation, loops in the program
 will be converted into recursive loops of multiple functions.
 
-The harder version (recursion2) will split basic blocks into blocks of 1-2
+The harder version (voodoo2) will split basic blocks into blocks of 1-2
 instructions before extracting them, resulting in a great many more extracted
 functions. A small change was made to the key generation algorithm so that
 competitors can't reuse the same solution.
@@ -49,5 +49,5 @@ competitors can't reuse the same solution.
 
 ## Resources Required
 
-* Provide only the compiled file (`recursion` or `recursion2` depending on the
+* Provide only the compiled file (`voodoo1` or `voodoo2` depending on the
   challenge) and the prompt.
