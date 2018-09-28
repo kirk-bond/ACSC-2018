@@ -1,14 +1,10 @@
 # Compiler Voodoo / Compiler Voodoo 2
 
-This source directory produces two problems. voodoo2 is a more difficult
-version of the first. Each should have the same prompt.
-
 Get the password and submit it for points.
 
 ## Flag
 
-voodoo1: `acsc18{llvm_is_better_than_gcc}`
-voodoo2: `acsc18{one_inst_allowed_per_bb}`
+acsc18{llvm_is_better_than_gcc}
 
 ## Category
 
@@ -49,5 +45,4 @@ competitors can't reuse the same solution.
 
 ## Resources Required
 
-* Provide only the compiled file (`voodoo1` or `voodoo2` depending on the
-  challenge) and the prompt.
+* voodoo1
