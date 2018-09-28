@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// generated with `openssl rand -hex 4
-
-
 #if defined(HARD_MODE)
 
 #include "key_hard.h"
