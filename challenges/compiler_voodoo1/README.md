@@ -1,10 +1,10 @@
-# Compiler Voodoo / Compiler Voodoo 2
+# Compiler Voodoo
 
 Get the password and submit it for points.
 
 ## Flag
 
-acsc18{llvm_is_better_than_gcc}
+`acsc18{llvm_is_better_than_gcc}`
 
 ## Category
 
@@ -27,11 +27,6 @@ making it harder to understand true control flow and masking function
 boundaries. As a side effect of this transformation, loops in the program
 will be converted into recursive loops of multiple functions.
 
-The harder version (voodoo2) will split basic blocks into blocks of 1-2
-instructions before extracting them, resulting in a great many more extracted
-functions. A small change was made to the key generation algorithm so that
-competitors can't reuse the same solution.
-
 ## Steps
 
 1. Open in your favorite diassembler (ida, binary ninja, gdb, objdump, etc).
@@ -45,4 +40,4 @@ competitors can't reuse the same solution.
 
 ## Resources Required
 
-* voodoo1
+* `voodoo1`

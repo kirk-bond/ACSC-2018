@@ -1,11 +1,12 @@
+#include "key.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#if defined(HARD_MODE)
-
-#include "key_hard.h"
 #define SRAND_SEED  0x4ae9ef4c
+
+
 void decrypt(char *plaintext, size_t len)
 {
     srand(SRAND_SEED);
@@ -16,23 +17,6 @@ void decrypt(char *plaintext, size_t len)
         plaintext[i] ^= (~rand()) & 0xff;
     }
 }
-
-#else
-
-#include "key.h"
-#define SRAND_SEED  0xd0c96a49
-void decrypt(char *plaintext, size_t len)
-{
-    srand(SRAND_SEED);
-    for (int i = 0; i < len; i++) {
-        if (i % 2 == 0) {
-            rand();
-        }
-        plaintext[i] ^= rand() & 0xff;
-    }
-}
-
-#endif  // HARD_MODE
 
 
 int main(int argc, char *argv[])

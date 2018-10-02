@@ -1,10 +1,10 @@
-# Compiler Voodoo / Compiler Voodoo 2
+# Compiler Voodoo 2
 
 Get the password and submit it for points.
 
 ## Flag
 
-voodoo2: acsc18{one_inst_allowed_per_bb}
+`acsc18{one_inst_allowed_per_bb}`
 
 ## Category
 
@@ -45,4 +45,4 @@ competitors can't reuse the same solution.
 
 ## Resources Required
 
-* voodoo2
+* `voodoo2`
