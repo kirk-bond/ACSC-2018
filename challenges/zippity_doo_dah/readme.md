@@ -19,19 +19,8 @@ Forensics
 The PowerShell way
 1. Open PowerShell
 1. Type the following:
-`New-Item -Name secrets -ItemType Directory
-Copy-Item .\secrets1001.zip .\secrets
-set-location .\secrets
-for($i=1001; $i -ge 1; $i--)
-   {   
-   $7ZipPath = "C:\Program Files\7-Zip\7z.exe"
-   $zipFile = "secrets$i.zip"
-   $zipFilePassword = "powershell" 
-   & $7ZipPath e $zipFile "-p$zipFilePassword" -y
-   }
- 
- & $7ZipPath e secrets.zip "-p$zipFilePassword" -y
- gc password.txt`
+    PS C:\> .\Deploy-YarPosH.ps1 -ComputerName c:\users\blue\computers.txt -Dir c:\windows\system32 -Path C:\users\blue\Desktop\yara32.exe -Rules C:\users\blue\Desktop\my_yara_rules.yar
+
 1. Flag still needs to be submitted correctly as acsc18{ROCKETMAN-PC}
 
 ## Resources Required
