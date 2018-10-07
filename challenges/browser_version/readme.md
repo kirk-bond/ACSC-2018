@@ -2,7 +2,6 @@
 A shiny new privilege escalation browser exploit was passed on to you and your team. You are so excited, you can hardly contain yourself and with that, want to let 'er rip as soon as possible. You've been working on escalate your privleges for a while and it seems the time has come! As you begin to prep your launcher, you decide to verify the browser platform version on the target one more time. Submit the browser version.
 <br>
 <br>
-Submit the contents of the file at the root of all the zip files
 **NOTE:  Be sure to submit the flag in the correct format ( acsc18{flag} )**
 
 ## Flag
