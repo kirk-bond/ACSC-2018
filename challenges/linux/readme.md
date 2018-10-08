@@ -81,4 +81,38 @@ acsc18{DontForgetHiddenFiles}
 
 ## Steps
 1. ls -l
-cat .hiddenflag
+1. cat .hiddenflag
+
+#Linux6
+
+## Problem
+
+What version of yum is being used on the VM?  Note:  Ensure you use the acsc18{#.#.#-###} format
+
+## Flag
+acsc18{3.4.3-158}
+
+## Hints
+1. Check the man file for yum
+
+## Steps
+1. yum --version
+
+
+#Linux7
+
+## Problem
+
+The flag is contained in a file somewhere on the system (Not in the users folder)
+
+## Flag
+acsc18{HopeYouUsedFind}
+
+## Hints
+1. You can specify that you are looking for a file with the find command
+1. You can execute commands with find as well
+
+## Steps
+1. find / -type f -exec grep "acsc18" '{}' \;
+
+
