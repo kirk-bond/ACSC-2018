@@ -2,9 +2,9 @@
 Access Sandy Mills-Mills' private server and find the key
 
 # Write-up:
-Searching for Sandy Mills-Mills will reveal https://twitter.com/sandymillsmills
+Searching for Sandy Mills-Mills will reveal https://twitter.com/smmacsc2018
 
-Throughout her feed, she mentions her server @ trogdor.cs.umd.edu and her github account
+Throughout her feed, she mentions her server @ trogdor.cs.umd.edu and her github account. She shares the same user name on github as Twitter (smmacsc2018)
 
 Searching her github account will reveal her ssh keys `privaat` and `openbare`
 
