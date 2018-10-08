@@ -1,5 +1,5 @@
 ## Problem
-Access Sandy Mills-Mills' private server and find the key
+Access Sandy Mills-Mills' private server and find the key. Keys.zip password is acsc2018
 
 ## Flag
 acsc2018{90c17db65f1822eb2ecc9a087106de4a}
