@@ -16,7 +16,7 @@ Forensics
 
 ## Steps
 1. Open the file in Winhex
-1. Change the first 4 bytes from 7A 7A 7A 7A to FF D8 FF E0
+1. Change the data in offset 0 - 3 from 7A 7A 7A 7A to FF D8 FF E0. Also, click on the 'z' next to FIF around offset 6, and change it a 'J'
 1. Save the file
 1. Open the file with a image viewer
 1. Notice the orange circle with the word "orange" written below it
