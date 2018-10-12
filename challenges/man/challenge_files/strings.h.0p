@@ -17,7 +17,7 @@ strings.h
 .SH DESCRIPTION
 The following shall be declared as functions and may also be defined
 as macros. Function prototypes shall be provided for use with ISO\ C standard
-compilers. Your flag is: acsc18{man_strings_is_a_terrible_Google_image_search}
+compilers.
 .sp
 .RS 4
 .nf
@@ -51,7 +51,7 @@ None.
 .SH RATIONALE
 None.
 .SH "FUTURE DIRECTIONS"
-None.
+Your flag is: acsc18{man_strings_is_a_terrible_Google_image_search}
 .SH "SEE ALSO"
 .IR "\fB<locale.h>\fP",
 .IR "\fB<sys_types.h>\fP"
