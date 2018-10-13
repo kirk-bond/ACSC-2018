@@ -1,0 +1,58 @@
+---
+- hosts: linuxchallenge
+  vars:
+    host_key_checking: False
+    ansible_ssh_private_key_file: ~/Downloads/anisible_test.pem
+  remote_user: centos
+  become: yes
+  gather_facts: no
+  pre_tasks:
+   - name: 'install python'
+     raw: 'sudo yum install -y python'
+  tasks:
+   - name: Run yum update
+     yum:
+       name: '*'
+       state: latest
+   - name: Create User Account
+     user:
+       name: user
+       shell: /bin/bash
+#   - name: Create user directory
+#     file:
+#       path: /home/user
+#       state: directory
+
+   - name: Copy Problems
+     unarchive:
+       dest: /home/user
+       src: ./linux.tar.gz
+#   - name: Copy Main Problems
+#     copy:
+#       src: "{{ item }}"
+#       dest: /home/user/
+#     with_fileglob:
+#       ./linux*
+#   - name: Copy Linux4
+#     copy:
+#       src: ./linux4
+#       dest: /home/user/
+   - name: Change User Home Directory Permissions
+     file:
+       path: /home/user
+       recurse: yes
+       owner: root
+       group: root
+       mode: 744
+   - name: Delete History
+     command: echo 'set +o history' >> /etc/profile
+   - name: Add key
+     command:  echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDEwNyf2SfxcUJVQ38L88lpxYKtYJjmA+sFGXJM9VrFjhsFWxbQnABrcKlz48FtB5SgnCGAl6ICg5t2WFPpEw4AJFqVqBY1fzyiuxKs0lqm1G2PAiLBnDo7ceSNqggKdkOFF0ICnv39xdXxc1YEu0ejTWU8Ly3YBOL12xWHaVdX+tmkMrdKJ2iL96dXmlhi3URy9m1Zy/638/IiKMVAwAVvvqDWn6060+G2g4qa0ZdDqYmSc66CPfTvpFUZiKMvhZvkz2aBB/bEQo4ts+A5ustD+R+ynZy/RD0mOGa3MJENxGffVQSpknYNTBbIdp74kopn3G6i2SNtr+PXu+hVFC7 troy@troy.localdomain' >> /home/user/.ssh/authorized_keys
+   - name: Change User Key Permissions
+     file:
+       path: /home/user/.ssh
+       recurse: yes
+       owner: user
+       group: user
+       mode: 400
+

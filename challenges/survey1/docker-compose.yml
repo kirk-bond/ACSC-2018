@@ -1,0 +1,19 @@
+version: "3"
+services:
+
+  implant:
+    build: ./implant
+    networks:
+      - target
+
+  serve:
+    build: ./serve
+    networks:
+      - target
+    volumes:
+      - ./serve/serve.py:/home/serve/
+
+networks:
+  target:
+    driver: overlay
+    internal: true
