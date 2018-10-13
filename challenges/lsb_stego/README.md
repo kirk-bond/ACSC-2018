@@ -27,4 +27,3 @@ Check out the content hosted at <server:13773>.
 ## Resources Required
 
     steghide
-

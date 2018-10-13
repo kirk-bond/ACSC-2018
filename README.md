@@ -15,4 +15,7 @@ The issues tab is for tracking all planning efforts both related and not related
 ## Help
 If you need any help, please ask.  Either open an issue and label it "Help" or feel free to email me directly.  I appreciate everything you are doing.
 
+## Testing
+If you are testing any of the challenges, please make sure you update the related issue for that challenge.  Note that you have tested it, any comments that you would like to add and how you would rate the challenge on a scale from 1-10.  There is a breakdown of the scale at the bottom of each issue ticket.
+
 Troy
