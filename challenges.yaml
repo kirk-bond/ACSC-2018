@@ -1,0 +1,278 @@
+---
+name: Anchovy_Dressing
+category: Cryptography
+value: ##
+description: 57n7w3{dkm9a9m6gp97c99n98m9nndib}
+flag: acsc18{Ipreferbluecheesedressing}
+hints:
+  - id: 1
+    hint: This is one of the most basic forms of encryption
+    cost: ##
+  - id: 2
+    hint: Notice that numbers are encrypted too
+    cost: ##
+---
+name: Crypto 1
+category: Cryptography
+value: ##
+description: Not a lot to say....find the flag
+
+0x610x630x730x630x310x380x7b0x540x680x69 115077101115115097103101073115 01001001011011100100100001100101011110000100010001100101011000110100001001101001 bkFuZEJhc2V9
+flag: acsc18{ThisMessageIsInHexDecBinAndBase}
+hints:
+  - id: 1
+    hint: This isn't actually encrypted
+    cost: ##
+  - id: 2
+    hint: There's four types of encoding here
+    cost: ##
+  - id: 3
+    hint: You have Hex, Decimal, Binary, and Base64 text to combine
+    cost: ##
+---
+name: DLLicious
+category: Reverse Engineering
+value: ##
+description: You found a suspicious looking dll on your machine. Can you figure out what its doing?
+flag: acsc18{dont you love windows}
+hints:
+  - id: 1
+    hint: Direct them to look at dll documentation on MSDN (https://docs.microsoft.com/en-us/cpp/build/dlls-in-visual-cpp?view=vs-2017)
+    cost: ##
+  - id: 2
+    hint: Direct them to look at the dll export table using a tool. (dump bin, ida, dependency walker)
+    cost: ##
+  - id: 3
+    hint: Explain what rundll does.
+    cost: ##
+---
+name: Motivate_Me
+category: Cryptography
+value: ##
+description: We found a set of great motivational quotes and decided to encrypt each of them using the flag
+flag: acsc18{TheyAreOneTimeForAReason}
+hints:
+  - id: 1
+    hint: The flag follows the standard format so the first 7 characters of each line should be pretty easy
+    cost: ##
+  - id: 2
+    hint: A simple XOR is used to encrypt each line
+    cost: ##
+  - id: 3
+    hint: Fortunately with English text it's pretty easy to guess the next letter
+    cost: ##
+---
+name: SANs	
+category: Forensics
+value: ##
+description: Pretty sure there's more information to this report then meets the eye
+flag: acsc18{TalkAboutLayersOfSecurity}
+hints:
+  - id: 1
+    hint: A pdf file is made up of many parts, there's a unique part in this one when you look
+    cost: ##
+  - id: 2
+    hint: You can embed a file within an image file pretty easily
+    cost: ##
+  - id: 3
+    hint: Just convert it
+    cost: ##
+---
+name: aol	
+category: Web Exploitation
+value: ##
+description: Remember when AOL used the be all the rage? For some reason AOL still thinks it is. So they have released a pretty cool feature, but the system will only allow their own browser to access it. Do you still have one of their free disks? (NOTE: Please don't actually install this crap on your system)
+flag: acsc18{DisableCallWaiting}
+hints:
+  - id: 1
+    hint: Browsers tell the servers alot about themselves. Can you manipulate that?
+    cost: ##
+  - id: 2
+    hint: User-agent strings can be manipulated pretty easily
+    cost: ##
+---
+name: ascii_art	
+category: Misc
+value: ##
+description: 
+No real trick here...
+
+!!!!!!!Flag starts here !!!!!!! ____ ____ _____ ____ ____ _____ _____ _____ ______ _____ ________ ____ ______ ________ ______ ( ) / ) / \ / ) / / / _ \ / ( / _ \ ( _ \ ( ) ( ) ( ) ( __ \ ( ) ) \ / /\ \ / / ( ( / / / /) ) ( () ) ) ) ( () ) ) () ) | | ) ) / /\ \ ) () ) ) ) ( ( ( () ) ( ( _ \ ( ( //( ( \ _ / / / \ _ / \ / | | ( ( ( () ) ( / ( ( \ \ ) ( ( ( ) ) ( ( ) ) / / \ \ \ \ / / \ \ / _ \ | | ) ) ) ( ) \ \ _ ) ) / / / /\ \ \ _ _/ / \ _ ( ( ( () ) ) )__ ( () ) ) () ) | | ( ( / /\ \ ( ( \ _)) ( ( ____( ( /( )\ _) // _) /\ _____/ (( _/ (/ /( /\ /( )\ )) _/ /\ )______) !!!!!!End of Flag!!!!!!!
+flag: acsc18{8BITART}
+hints:
+  - id: 1
+    hint: Many ASCII art characters have a flat top
+    cost: ##
+  - id: 2
+    hint: Each line is an equal length of characters
+    cost: ##
+  - id: 3
+    hint: Break the lines at postion 147
+    cost: ##
+---
+name: browser_version	
+category: Forensics
+value: ##
+description: A shiny new privilege escalation browser exploit was passed on to you and your team. You are so excited, you can hardly contain yourself and with that, want to let 'er rip as soon as possible. You've been working on escalate your privleges for a while and it seems the time has come! As you begin to prep your launcher, you decide to verify the browser platform version on the target one more time. Submit the browser version. 
+
+NOTE: Be sure to submit the flag in the correct format ( acsc18{flag} )
+flag: acsc18{58.0}
+hints:
+  - id: 1
+    hint: If I was Firefox, where would I keep this data?
+    cost: ##
+  - id: 2
+    hint: Maybe you can loop through each file looking for a keyword or two.
+    cost: ##
+---
+name: chat_with_me	
+category: Misc
+value: ##
+description: Please place all of your challenges in here in their own individual folders. Please use this as a template for your readme.md file
+flag: acsc18{DontSlackOff}
+hints:
+  - id: 1
+    hint: Join the Slack server
+    cost: ##
+---
+name: compiler_voodoo1	
+category: Reverse Engineering
+value: ##
+description: 
+Get the password and submit it for points.
+flag: acsc18{llvm_is_better_than_gcc}
+---
+name: compiler_voodoo2	
+category: Reverse Engineering
+value: ##
+description: Get the password and submit it for points.
+flag: acsc18{one_inst_allowed_per_bb}
+---
+name: crackme-1	
+category: Reverse Engineering
+value: ##
+description: How good are you at picking locks? Try your luck here.
+flag: acsc18{wonphpwvyxnyekmq}
+hints:
+  - id: 1
+    hint: Can you figure out what this program is doing without looking at its source code?
+    cost: ##
+  - id: 2
+    hint: Use a dissambler or a debugger to make sense of the machine code.
+    cost: ##
+  - id: 3
+    hint: Locate the decode function and figure out what it does with your inputs.
+    cost: ##
+---
+name: crypto-2	
+category: Cryptography
+value: ##
+description: Can you crack the cipher? It looks like the server is using RSA to encrypt secrets.
+flag: acsc18{what_does_gcd_stand_for_again?}
+hints:
+  - id: 1
+    hint: These number are too big to factor... What else can you do?
+    cost: ##
+  - id: 2
+    hint: Is calculating the GCD of two numbers easier than factoring one?
+    cost: ##
+---
+name: dsp-2
+category: Misc
+value: ##
+description: It's in the file
+flag: acsc18{pwn_the_rfz}
+hints:
+  - id: 1
+    hint: This is an OFDM burst
+    cost: ##
+  - id: 2
+    hint: Autocorrelation is your friend
+    cost: ##
+  - id: 3
+    hint: The FFT size is 128
+    cost: ##
+  - id: 4
+    hint: There are 16 guard subcarriers, no DC subcarrier
+    cost: ##
+  - id: 5
+    hint: The subcarriers are QPSK modulated
+    cost: ##
+---
+name: decoder	
+category: Scripting
+value: ##
+description: Encryption is hard, encoding is easy, but not very secure. So let's just encode A LOT of times! Don't worry, we even told you what encoding method we used on each pass (encoding...).
+
+1.  base64 = base64 encoded string
+2.  base32 = base32 encoded string
+3.  reverse = reverse the order of the string (abc -> cba)
+4.  CaseInvert = swap the capitalization of the strig (AbC -> aBc)
+5.  rot13 = encode the string with 'rot_13'
+
+flag: acsc18{ItsOnlySlightlyScrambled}
+hints:
+  - id: 1
+    hint: Seperate the identified encoding method from the encoded string
+    cost: ##
+  - id: 2
+    hint: Keep looping until you don't recoginize the encoding method given (hint....it's the flag!)
+    cost: ##
+---
+name: exposed_server	
+category: Web Exploit
+value: ##
+description: Just another exposed web server. You can find the flag in /etc/flag.txt. NOTE NO TOOLS ARE REQUIRED FOR THIS CHALLENGE!
+flag: acsc18{StillHaventPatched}
+hints:
+  - id: 1
+    hint: Wordpress gets lots of extra functionality from the plug-ins a site might have installed
+    cost: ##
+  - id: 2
+    hint: A number of websites track vulnerabilities associated with these plugins and other software
+    cost: ##
+  - id: 3
+    hint: The site-editor plugin has a lot of power over Wordpress
+    cost: ##
+---
+name: feeling_lucky	
+category: Reverse Engineering
+value: ##
+description: You found the source code to a slot machine, can you use your insider knowledge to win big?
+flag: acsc18{JACKPOT!!}
+hints:
+  - id: 1
+    hint: Check out the helper_pullHandle function
+    cost: ##
+  - id: 2
+    hint: Look at the helper_getRandLetter function
+    cost: ##
+---
+name: find_the_key	
+category: OSINT
+value: ##
+description: Enter the ip address of the server that is hosting the SSL certificate with the serial number 03:0a:d7:bc:48:8b:05:b9:4f:db:25:70:92:72:c3:98:11:20. Ensure you use to correct flag format acsc18{X.X.X.X}
+flag: acsc18{166.62.37.150}
+hints:
+  - id: 1
+    hint: There are a few services that continaully scan the Internet
+    cost: ##
+  - id: 2
+    hint: For Shodan at least, you can't just search for the SSL serial number without specifiying a field
+    cost: ##
+---
+name: force	
+category: Forensics
+value: ##
+description: Yoda was wise but Luke managed to make it into more movies
+flag: acsc18{TheForceIsStrong}
+hints:
+  - id: 1
+    hint: It's a pretty big file for such a small web page
+    cost: ##
+  - id: 2
+    hint: Is it really a web page?
+    cost: ##
+  - id: 3
+    hint: See what type of file it is, and try opening it with another program
+    cost: ##
