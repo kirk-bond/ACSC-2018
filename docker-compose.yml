@@ -1,0 +1,95 @@
+version: "3"
+services:
+
+  aol:
+    build: challenges/aol
+    image: aol
+    ports:
+      - 5000:80
+
+  crypto-2:
+    build: challenges/crypto-2
+    image: crypto-2
+    ports:
+      - 5001:5000
+
+  exposed-server:
+    build: challenges/exposed_server
+    image: exposed-server
+    ports:
+      - 5002:80
+
+  jollyroger:
+    build: challenges/jollyroger
+    image: jollyroger
+    ports:
+      - 5003:5000
+
+  lsb-stego:
+    build: challenges/lsb_stego
+    image: lsb-stego
+    ports:
+      - 5004:80
+
+  math-machine2:
+    build: challenges/math_machine2
+    image: math-machine2
+    ports:
+      - 5005:5000
+
+  math-machine3:
+    build: challenges/math_machine3
+    image: math-machine3
+    ports:
+      - 5006:5100
+
+  obscure-security:
+    build: challenges/obscure_security
+    image: obscure-security
+    ports:
+      - 5007:80
+
+  prize:
+    build: challenges/prize
+    image: prize
+    ports:
+      - 5008:80
+
+  # TODO: nested docker-compose
+  #survey1:
+  #  build: challenges/survey1
+  #  image: survey1
+
+  ssh-host:
+    build: challenges/ssh_host
+    image: ssh-host
+    ports:
+      - "2222:22"
+    links:
+      - feeling-lucky
+      - man1
+      - man2
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    #deploy:
+    #  replicas: 3
+
+
+
+  # The following services are for interactive challenges. Competitors will
+  # pivot through the ssh-host to login to these containers.
+
+  feeling-lucky:
+    build: challenges/feeling_lucky
+    image: feeling-lucky
+    command: /bin/true
+
+  man1:
+    build: challenges/man1
+    image: man1
+    command: /bin/true
+
+  man2:
+    build: challenges/man2
+    image: man2
+    command: /bin/true
