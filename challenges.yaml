@@ -15,9 +15,10 @@ hints:
 name: Crypto 1
 category: Cryptography
 value: ##
-description: Not a lot to say....find the flag
-
-0x610x630x730x630x310x380x7b0x540x680x69 115077101115115097103101073115 01001001011011100100100001100101011110000100010001100101011000110100001001101001 bkFuZEJhc2V9
+description: |
+  Not a lot to say....find the flag
+  
+  0x610x630x730x630x310x380x7b0x540x680x69 115077101115115097103101073115 01001001011011100100100001100101011110000100010001100101011000110100001001101001 bkFuZEJhc2V9
 flag: acsc18{ThisMessageIsInHexDecBinAndBase}
 hints:
   - id: 1
@@ -62,7 +63,7 @@ hints:
     hint: Fortunately with English text it's pretty easy to guess the next letter
     cost: ##
 ---
-name: SANs	
+name: SANs
 category: Forensics
 value: ##
 description: Pretty sure there's more information to this report then meets the eye
@@ -78,10 +79,12 @@ hints:
     hint: Just convert it
     cost: ##
 ---
-name: aol	
+name: aol
 category: Web Exploitation
 value: ##
-description: Remember when AOL used the be all the rage? For some reason AOL still thinks it is. So they have released a pretty cool feature, but the system will only allow their own browser to access it. Do you still have one of their free disks? (NOTE: Please don't actually install this crap on your system)
+description: "Remember when AOL used the be all the rage? For some reason AOL still thinks it is. So they have released a pretty cool feature, but the system will only allow their own browser to access it. Do you still have one of their free disks? 
+
+(NOTE: Please don't actually install this crap on your system)"
 flag: acsc18{DisableCallWaiting}
 hints:
   - id: 1
@@ -91,13 +94,12 @@ hints:
     hint: User-agent strings can be manipulated pretty easily
     cost: ##
 ---
-name: ascii_art	
+name: ascii_art
 category: Misc
 value: ##
-description: 
-No real trick here...
+description: "No real trick here...
 
-!!!!!!!Flag starts here !!!!!!! ____ ____ _____ ____ ____ _____ _____ _____ ______ _____ ________ ____ ______ ________ ______ ( ) / ) / \ / ) / / / _ \ / ( / _ \ ( _ \ ( ) ( ) ( ) ( __ \ ( ) ) \ / /\ \ / / ( ( / / / /) ) ( () ) ) ) ( () ) ) () ) | | ) ) / /\ \ ) () ) ) ) ( ( ( () ) ( ( _ \ ( ( //( ( \ _ / / / \ _ / \ / | | ( ( ( () ) ( / ( ( \ \ ) ( ( ( ) ) ( ( ) ) / / \ \ \ \ / / \ \ / _ \ | | ) ) ) ( ) \ \ _ ) ) / / / /\ \ \ _ _/ / \ _ ( ( ( () ) ) )__ ( () ) ) () ) | | ( ( / /\ \ ( ( \ _)) ( ( ____( ( /( )\ _) // _) /\ _____/ (( _/ (/ /( /\ /( )\ )) _/ /\ )______) !!!!!!End of Flag!!!!!!!
+!!!!!!!Flag starts here !!!!!!! ____ ____ _____ ____ ____ _____ _____ _____ ______ _____ ________ ____ ______ ________ ______ ( ) / ) / \ / ) / / / _ \ / ( / _ \ ( _ \ ( ) ( ) ( ) ( __ \ ( ) ) \ / /\ \ / / ( ( / / / /) ) ( () ) ) ) ( () ) ) () ) | | ) ) / /\ \ ) () ) ) ) ( ( ( () ) ( ( _ \ ( ( //( ( \ _ / / / \ _ / \ / | | ( ( ( () ) ( / ( ( \ \ ) ( ( ( ) ) ( ( ) ) / / \ \ \ \ / / \ \ / _ \ | | ) ) ) ( ) \ \ _ ) ) / / / /\ \ \ _ _/ / \ _ ( ( ( () ) ) )__ ( () ) ) () ) | | ( ( / /\ \ ( ( \ _)) ( ( ____( ( /( )\ _) // _) /\ _____/ (( _/ (/ /( /\ /( )\ )) _/ /\ )______) !!!!!!End of Flag!!!!!!!"
 flag: acsc18{8BITART}
 hints:
   - id: 1
@@ -110,7 +112,7 @@ hints:
     hint: Break the lines at postion 147
     cost: ##
 ---
-name: browser_version	
+name: browser_version
 category: Forensics
 value: ##
 description: A shiny new privilege escalation browser exploit was passed on to you and your team. You are so excited, you can hardly contain yourself and with that, want to let 'er rip as soon as possible. You've been working on escalate your privleges for a while and it seems the time has come! As you begin to prep your launcher, you decide to verify the browser platform version on the target one more time. Submit the browser version. 
@@ -125,7 +127,7 @@ hints:
     hint: Maybe you can loop through each file looking for a keyword or two.
     cost: ##
 ---
-name: chat_with_me	
+name: chat_with_me
 category: Misc
 value: ##
 description: Please place all of your challenges in here in their own individual folders. Please use this as a template for your readme.md file
@@ -135,20 +137,19 @@ hints:
     hint: Join the Slack server
     cost: ##
 ---
-name: compiler_voodoo1	
+name: compiler_voodoo1
 category: Reverse Engineering
 value: ##
-description: 
-Get the password and submit it for points.
+description: Get the password and submit it for points.
 flag: acsc18{llvm_is_better_than_gcc}
 ---
-name: compiler_voodoo2	
+name: compiler_voodoo2
 category: Reverse Engineering
 value: ##
 description: Get the password and submit it for points.
 flag: acsc18{one_inst_allowed_per_bb}
 ---
-name: crackme-1	
+name: crackme-1
 category: Reverse Engineering
 value: ##
 description: How good are you at picking locks? Try your luck here.
@@ -164,7 +165,7 @@ hints:
     hint: Locate the decode function and figure out what it does with your inputs.
     cost: ##
 ---
-name: crypto-2	
+name: crypto-2
 category: Cryptography
 value: ##
 description: Can you crack the cipher? It looks like the server is using RSA to encrypt secrets.
@@ -199,16 +200,16 @@ hints:
     hint: The subcarriers are QPSK modulated
     cost: ##
 ---
-name: decoder	
+name: decoder
 category: Scripting
 value: ##
-description: Encryption is hard, encoding is easy, but not very secure. So let's just encode A LOT of times! Don't worry, we even told you what encoding method we used on each pass (encoding...).
+description: "Encryption is hard, encoding is easy, but not very secure. So let's just encode A LOT of times! Don't worry, we even told you what encoding method we used on each pass (encoding...).
 
 1.  base64 = base64 encoded string
 2.  base32 = base32 encoded string
 3.  reverse = reverse the order of the string (abc -> cba)
 4.  CaseInvert = swap the capitalization of the strig (AbC -> aBc)
-5.  rot13 = encode the string with 'rot_13'
+5.  rot13 = encode the string with 'rot_13'"
 
 flag: acsc18{ItsOnlySlightlyScrambled}
 hints:
@@ -219,7 +220,7 @@ hints:
     hint: Keep looping until you don't recoginize the encoding method given (hint....it's the flag!)
     cost: ##
 ---
-name: exposed_server	
+name: exposed_server
 category: Web Exploit
 value: ##
 description: Just another exposed web server. You can find the flag in /etc/flag.txt. NOTE NO TOOLS ARE REQUIRED FOR THIS CHALLENGE!
@@ -235,7 +236,7 @@ hints:
     hint: The site-editor plugin has a lot of power over Wordpress
     cost: ##
 ---
-name: feeling_lucky	
+name: feeling_lucky
 category: Reverse Engineering
 value: ##
 description: You found the source code to a slot machine, can you use your insider knowledge to win big?
@@ -248,7 +249,7 @@ hints:
     hint: Look at the helper_getRandLetter function
     cost: ##
 ---
-name: find_the_key	
+name: find_the_key
 category: OSINT
 value: ##
 description: Enter the ip address of the server that is hosting the SSL certificate with the serial number 03:0a:d7:bc:48:8b:05:b9:4f:db:25:70:92:72:c3:98:11:20. Ensure you use to correct flag format acsc18{X.X.X.X}
@@ -261,7 +262,7 @@ hints:
     hint: For Shodan at least, you can't just search for the SSL serial number without specifiying a field
     cost: ##
 ---
-name: force	
+name: force
 category: Forensics
 value: ##
 description: Yoda was wise but Luke managed to make it into more movies
@@ -275,4 +276,372 @@ hints:
     cost: ##
   - id: 3
     hint: See what type of file it is, and try opening it with another program
+    cost: ##
+---
+name: forgot_something
+category: Forensics
+value: ##
+description: The flag is right there, just open the image.
+flag: acsc18{JustALittleShort}
+hints:
+  - id: 1
+    hint: Most file types follow a specific format
+    cost: ##
+  - id: 2
+    hint: What does the beginning of a jpg look like?
+    cost: ##
+---
+name: ftp_capture
+category: Forensics
+value: ##
+description: Plaintext FTP transfer...what could be easier
+flag: acsc18{AtLeastItsNotEncrypted}
+hints:
+  - id: 1
+    hint: Rememeber FTP has a seperate data chanel
+    cost: ##
+  - id: 2
+    hint: Is it possible to search for the header of a jpg file?
+    cost: ##
+  - id: 3
+    hint: If only you could follow the entire file transfer and save it
+    cost: ##
+---
+name: hints
+category: Misc
+value: ##
+description: Purchase each hint to get the flag (don't worry, you won't actually lose any points for this hint)
+flag: acsc18{UseHintsWisely}
+hints:
+  - id: 1
+    hint: Combine the next to hints together for the flag
+    cost: ##
+  - id: 2
+    hint: acsc18{Use
+    cost: ##
+  - id: 3
+    hint: HintsWisely}
+    cost: ##
+---
+name: jollyroger
+category: Reverse Engineering
+value: ##
+description: It looks like this smart device provides an unauthenticated web portal to update the firmware. They say that they cryptographically sign their code so there's no need to authenticate, but I have a hunch it's not as secure as they think. Can you find a way to upload a modified firmware image?
+flag: acsc18{i_thought_crcs_were_secure}
+hints:
+  - id: 1
+    hint: The header is 32 bytes long, followed by an ELF file.
+    cost: ##
+  - id: 2
+    hint: They're using a generic crc32 checksum to verify data integrity.
+    cost: ##
+  - id: 3
+    hint: There is only one checksum, present in both the header and the body of the image.
+    cost: ##
+  - id: 4
+    hint: The code segment of the ELF is being checksummed. It looks like some bytes of the code segment are being skipped.
+    cost: ##
+  - id: 5
+    hint: The structure of the proprietary header is struct header { uint32_t magic; uint32_t version; uint32_t num_cksums; uint32_t c1_offset; uint32_t c1_cksum; uint8_t pad[12]; };
+    cost: ##
+---
+name: leaky_crypto
+category: Cryptography
+value: ##
+description: |
+  "We encrypted the flag with AES-ECB and a secret key and got the following:   b7695884638a2d5551c0a1ed35142c939a60791aba95dbaedd2994d677907602a0779b858857a3a3d04304fcde225ce7228993a1a0cd57ab37425fc7b32d4ca775053f0b39dccb6e9eb88ae40ec8aa9f"
+  
+  Unfortunately we lost the key. On the bright side though we did encrypt a bunch of other test flags with the same key before we lost it. Can you help us out?
+flag: acsc18{encryption_is_great_but_only_if_it_doesnt_leak_like_my_old_pipes}
+hints:
+  - id: 1
+    hint: AES works on fixed size blocks
+    cost: ##
+  - id: 2
+    hint: Blocks that are exactly the same produce the same encrypted output
+    cost: ##
+  - id: 3
+    hint: Remember that there are two hex characters for each plaintext character
+    cost: ##
+---
+name: lsb_stego
+category: Forensics
+value: ##
+description: "Check out the content hosted at server:13773"
+flag: acsc18{98hcommunicationslocatorinterceptor}
+hints:
+  - id: 1
+    hint: So you've checked the source for the web page and ran simple forensics tests on the content?
+    cost: ##
+  - id: 2
+    hint: There's more than it seems to that paddle.
+    cost: ##
+  - id: 3
+    hint: Stego
+    cost: ##
+---
+name: man1
+category: Linux
+value: ##
+description: Did you know man pages have their own markup language? Check out the man page for strings on this alpine linux docker.
+flag: acsc18{man_strings_is_a_terrible_Google_image_search}
+hints:
+  - id: 1
+    hint: Some markup languages hide comments from display when rendered.
+    cost: ##
+  - id: 2
+    hint: Try to view the source file
+    cost: ##
+  - id: 3
+    hint: cat /usr/share/man/man0/strings/h.0p
+    cost: ##
+---
+name: man2
+category: Linux
+value: ##
+description: Do you know all the things 'Strings' is capable of? Well, maybe not on all OS, but on this one.
+flag: acsc18{man_strings_ftw}
+hints:
+  - id: 1
+    hint: Man, that problem statement was not much to go off of!
+    cost: ##
+  - id: 2
+    hint: How do you find out more about a program? Sometimes --help, but not here.
+    cost: ##
+  - id: 3
+    hint: man strings
+    cost: ##
+---
+name: math_machine2
+category: Scripting
+value: ##
+description: Think you're good at math? Answer 100 simple problems in 2 minutes and you'll get your flag.
+flag: acsc18{SameScriptMinorChange}
+hints:
+  - id: 1
+    hint: There is probably a way to automate this task and complete it a lot faster than you can
+    cost: ##
+  - id: 2
+    hint: Try seperating the input recieved by each new line
+    cost: ##
+---
+name: math_machine3
+category: Scripting
+value: ##
+description: Same as last time, but just a little bit of a twist.
+flag: acsc18{WordsMatter}
+hints:
+  - id: 1
+    hint: There is probably a way to automate this task and complete it a lot faster than you can
+    cost: ##
+  - id: 2
+    hint: Try seperating the input recieved by spaces
+    cost: ##
+  - id: 3
+    hint: Break each word pair into is respective value to solve the problem
+    cost: ##
+---
+name: obscure_security
+category: Web Exploitation
+value: ##
+description: The server guy has recently upgrade the security on the web portal to ensure that no one can get the flag. Prove him wrong
+flag: acsc18{ObscurityIsNotSecurity}
+hints:
+  - id: 1
+    hint: What is the javascript function doing
+    cost: ##
+  - id: 2
+    hint: Where do you get redirected to?
+    cost: ##
+---
+name: osintfun
+category: OSINT
+value: ##
+description: Access Sandy Mills-Mills' private server and find the key. Keys.zip password is acsc2018
+flag: acsc18{90c17db65f1822eb2ecc9a087106de4a}
+hints:
+  - id: 1
+    hint: Twitter
+    cost: ##
+  - id: 2
+    hint: Read the feed
+    cost: ##
+  - id: 3
+    hint: Username re-use?
+    cost: ##
+---
+name: prize
+category: Web Exploitation
+value: ##
+description: Business has been going great and we are rapidly approaching our 1 millionth visitor. If you happen to be that lucky person, we've got a great prize for you
+flag: acsc18{WinnerWinnerChickenDinner}
+hints:
+  - id: 1
+    hint: Cookies aren't just tasty, they are useful too
+    cost: ##
+  - id: 2
+    hint: That second cookie doesn't look encrypted, maybe encoded?
+    cost: ##
+  - id: 3
+    hint: Is that a hash in there too?
+    cost: ##
+---
+name: regex_fun
+category: Misc
+value: ##
+description: |
+  "Find a flag that meets all of the below requirements. FYI on the off chance you find one that you are sure works but don't get it correct, let a cadre know so we can manually ajudicate."
+  
+  "(?:[a-z0-9_]+)(?:{.*?})"
+  "^[csa]{4}.*"
+  "^(?:..)+$"
+  "^(?:....)+$"
+  "^(?:......)+$"
+  "^(?:............)+$"
+  ".{1}.(?:.)[a-z0-9_{}].{1}.{1}.(?:.).{1}[a-z0-9_{}]..{1}a-z0-9_{}(?:.).{1}[a-z0-9_{}].{1}.{1}[a-z0-9_{}].{1}[a-z0-9_{}][a-z0-9_{}].{1}$"
+  "[a-z0-9]{6}[A-Z{}]{1,5}[a-z0-9]{3}[A-Z]...[a-z0-9]{0,3}[A-Z0-9].[A-Z0-9].{2}[A-Z{}]"
+  "[a-z0-9{}]{7}([A-Z])[a-z]{3}([A-Z])([a-z]).\1[a-z]{2}\3[A-Z].[A-Z]i\3[a-z0-9{}]"
+  "a(?:.)e(?:.)A(?:.)i(?:.)o(?:.)i(?:.)"
+  "(?=(?:.?[{].?){1})(?=(?:.?[}].?){1})(?=(?:.?[a].?){1})(?=(?:.?[A].?){1})(?=(?:.?[c].?){2})(?=(?:.?[d].?){1})(?=(?:.?[e].?){1})(?=(?:.?[G].?){2})(?=(?:.?[i].?){2})(?=(?:.?[n].?){3})(?=(?:.?[o].?){1})(?=(?:.?[p].?){1})(?=(?:.?[r].?){2})(?=(?:.?[s].?){1})(?=(?:.?[T].?){1})(?=(?:.?[W].?){1})(?=(?:.?[1].?){1})(?=(?:.?[8].?){1})"
+flag: acsc18{GrepAndGrinToWin}
+hints:
+  - id: 1
+    hint: regex101.com is a great site (hell it's where we tested this)
+    cost: ##
+  - id: 2
+    hint: Figure out the size of the flag and work backwards
+    cost: ##
+  - id: 3
+    hint: Every character is explicitly defined
+    cost: ##
+---
+name: shape_color
+category: Forensics
+value: ##
+description: "You were given a file that is supposed to be a picture, however, you can open it and don't know why at the moment. Normally you would just move on to something else, however, you can't except defeat and are determined to get it open. Once you finally get it open, submit the flag as the color of the shape in the jpg. 
+
+NOTE: Be sure to submit the flag in the correct format ( acsc18{YourFlag} )"
+flag: acsc18{orange}
+hints:
+  - id: 1
+    hint: Maybe we need a hex editor.
+    cost: ##
+  - id: 2
+    hint: I wonder if the file header information is correct?
+    cost: ##
+  - id: 3
+    hint: Wait, you said this was a jpg, right? Maybe we should ensure the header is set for a jpg.
+    cost: ##
+---
+name: stupid_steno
+category: Forensics
+value: ##
+description: I've got an important secret that I can't let anyone else see. I'll just hide it right here.
+flag: acsc18{NotRealyStenography}
+hints:
+  - id: 1
+    hint: The flag isn't encoded or encrytped or anything like that
+    cost: ##
+  - id: 2
+    hint: Try looking behind the picture
+    cost: ##
+  - id: 3
+    hint: The flag is just a long string
+    cost: ##
+---
+name: stupid_steno2
+category: Forensics
+value: ##
+description: Well that didn't work out the way I thought it would at first. Lets try to hide it this way
+flag: acsc18{HiddenInPlainSight}
+hints:
+  - id: 1
+    hint: The flag isn't encoded or encrytped or anything like that
+    cost: ##
+  - id: 2
+    hint: Try some simple color adjustments to the image
+    cost: ##
+  - id: 3
+    hint: The "Threshold" function can do some pretty cool stuff
+    cost: ##
+---
+name: survey1
+category: Misc
+value: ##
+description: Connect to to the implant, survey your environment, and send me the flag.
+flag: acsc18{webheader_owngoal}
+hints:
+  - id: 1
+    hint: Look at your network interfaces and try to see if there are any other devices on the local network.
+    cost: ##
+  - id: 2
+    hint: Try to connect to the other device with a browser.
+    cost: ##
+  - id: 3
+    hint: Look at the header data.
+    cost: ##
+---
+name: whats_going_on_here
+category: Forensics
+value: ##
+description: "The network dudes are talking about one of our systems beaconing out somewhere. The system has been checked several times already with no evidence of weirdness going on but the beacons are still happening. You've decided to involve some outside help and they've asked for the registry hives of the system. Before shipping them off, you decide to take a gander since you hadn't looked at them. Find the beacons and submit one of the IPs as the flag.
+NOTE: When you submit it, submit it in the correct format though ( acsc18{YourFlag} )"
+flag: 
+  acsc18{178.89.159.34}
+  acsc18{178.89.159.37}
+hints:
+  - id: 1
+    hint: Where is persistence usually within the Registry?
+    cost: ##
+  - id: 2
+    hint: Wouldn't that be cool if there were tools that could help rip the Registry apart?
+    cost: ##
+  - id: 3
+    hint: Obfuscation is like a onion, you know what I mean?
+    cost: ##
+---
+name: where_am_i2
+category: Forensics
+value: ##
+description: "Check out this fantastic new website that some company just bough. What city are they located in? NOTE: No you can't just search for the flag you cheaters. The flag is obvious when you find it, but is not currently in the correct format. When you submit it, submit it in the correct format though ( acsc18{YourFlag} )"
+flag: acsc18{WalaWala}
+hints:
+  - id: 1
+    hint: I imagine the address is on the contact page
+    cost: ##
+  - id: 2
+    hint: What changes they browsed to the contact page?
+    cost: ##
+  - id: 3
+    hint: What can tell you all about the encryption they are using? It also includes some location details.
+    cost: ##
+---
+name: who_is_this_cat?
+category: Forensics
+value: ##
+description: "Another section is in need of help looking for a potenitally rogue system and all they have is a MAC of 00:0c:29:61:c1:89. We informed them we may be able to assist them in finding the computername of the system tied to the MAC somewhere in our traffic captures but we can't make any promises.
+
+NOTE: Be sure to submit the flag in the correct format ( acsc18{YourFlag} )"
+flag: acsc18{ROCKETMAN-PC}
+hints:
+  - id: 1
+    hint: Wireshark is a wonderful asset.
+    cost: ##
+  - id: 2
+    hint: Maybe NetBIOS can help us.
+    cost: ##
+---
+name: zippity_doo_dah
+category: Forensics
+value: ##
+description: "You were given another zip file off of the hard drive we were analyzing. We also found a text file with it called 'password.txt' and the password was 'powershell'. When we unzipped the file with the password, there was another zip, and another zip. It seems that this file is zipped over and over again with this same password. 
+
+Submit the contents of the file at the root of all the zip files NOTE: Be sure to submit the flag in the correct format ( acsc18{YourFlag} )"
+flag: acsc18{too_much_sauce}
+hints:
+  - id: 1
+    hint: Only do it manually if you have months to spare
+    cost: ##
+  - id: 2
+    hint: Maybe a "For" loop will help
     cost: ##
