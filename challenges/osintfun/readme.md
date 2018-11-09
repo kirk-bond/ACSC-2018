@@ -1,5 +1,5 @@
 ## Problem
-We believe employee Sandy Mills-Mills' stole sensitive data and is storing it on her private server. She maintains an active social media presence. Use your OSINT abilities to log into her private server and find the hidden flag.
+We believe employee Sandy Mills-Mills stole sensitive data and is storing it on her private server. She maintains an active Twitter presence. Use your OSINT abilities to log into her private server and find the hidden flag.
 
 ## Flag
 acsc2018{90c17db65f1822eb2ecc9a087106de4a}
