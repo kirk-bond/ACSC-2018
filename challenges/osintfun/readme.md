@@ -21,7 +21,7 @@ Searching her github account will reveal her ssh keys in keys.zip.
 
 `cat keys.pub` reveals her smmacsc2018 username on server @ sandymillsmills.acsc18.com 
 
-`sftp -i privaat smmacsc2018@sandymillsmills.acsc18.com`
+`sftp -i keys smmacsc2018@sandymillsmills.acsc18.com`
 will give you access to key.txt, but through sftp only and with the correct sshkey perms (chmod 600 {keys,keys.pub}).
 
 `sftp> get key.txt`
