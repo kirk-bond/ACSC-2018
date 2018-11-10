@@ -17,14 +17,16 @@ Searching for Sandy Mills-Mills will reveal https://twitter.com/smmacsc2018
 
 Throughout her feed, she mentions her github account. She shares the same user name on github as Twitter (smmacsc2018). 
 
-Searching her github account will reveal her ssh keys in keys.zip.
+Searching her github account will reveal her old ssh key `keys.pub`
 
-`cat keys.pub` reveals her smmacsc2018 username on server @ sandymillsmills.acsc18.com 
+`cat keys.pub` reveals her smmacsc2018 username on server @ 54.202.21.39
 
-`sftp -i keys smmacsc2018@sandymillsmills.acsc18.com`
-will give you access to key.txt, but through sftp only and with the correct sshkey perms (chmod 600 {keys,keys.pub}).
+`old_password` reveals her password to be acsc18pemacsc18pemacsc18pem
 
-`sftp> get key.txt`
+`sftp smmacsc2018@54.202.21.39`
+will give you access to key.txt, but through sftp only 
+
+`sftp> get uploads/key.txt`
 
 
 ## Resources Required
