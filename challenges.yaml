@@ -142,7 +142,8 @@ hints:
 name: chat_with_me
 category: Misc
 value: ##
-description: Please place all of your challenges in here in their own individual folders. Please use this as a template for your readme.md file
+description: "Just visit the ACSC Slack chat to get the flag (and then hang around afterwards for announcements and other information).  Link is below"
+links:  "https://join.slack.com/t/acsc18/shared_invite/enQtNDM0Mzg1NTQ2ODIwLWY3ZmY3YWZjMGNhOTExMWRjOWFlNTQ4YjhjZjk5NTQwYTVlN2M5YTgxN2EyY2YwMzc0MDNlNDdhZTAyMjFmYzU"
 flag: acsc18{DontSlackOff}
 hints:
   - id: 1
