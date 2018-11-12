@@ -1,4 +1,31 @@
 ---
+name: chat_with_me
+category: Misc
+value: 5
+description: "Just visit the ACSC Slack chat to get the flag (and then hang around afterwards for announcements and other information).  Link is below"
+links:  "https://join.slack.com/t/acsc18/shared_invite/enQtNDM0Mzg1NTQ2ODIwLWY3ZmY3YWZjMGNhOTExMWRjOWFlNTQ4YjhjZjk5NTQwYTVlN2M5YTgxN2EyY2YwMzc0MDNlNDdhZTAyMjFmYzU"
+flag: acsc18{DontSlackOff}
+hints:
+  - id: 1
+    hint: Join the Slack server
+    cost: 0
+---
+name: hints
+category: Misc
+value: 5
+description: Purchase each hint to get the flag (don't worry, you won't actually lose any points for this hint)
+flag: acsc18{UseHintsWisely}
+hints:
+  - id: 1
+    hint: Combine the next to hints together for the flag
+    cost: 0
+  - id: 2
+    hint: acsc18{Use
+    cost: 0
+  - id: 3
+    hint: HintsWisely}
+    cost: 0
+---
 name: Anchovy_Dressing
 category: Cryptography
 value: ##
@@ -137,17 +164,6 @@ hints:
     cost: ##
   - id: 2
     hint: Maybe you can loop through each file looking for a keyword or two.
-    cost: ##
----
-name: chat_with_me
-category: Misc
-value: ##
-description: "Just visit the ACSC Slack chat to get the flag (and then hang around afterwards for announcements and other information).  Link is below"
-links:  "https://join.slack.com/t/acsc18/shared_invite/enQtNDM0Mzg1NTQ2ODIwLWY3ZmY3YWZjMGNhOTExMWRjOWFlNTQ4YjhjZjk5NTQwYTVlN2M5YTgxN2EyY2YwMzc0MDNlNDdhZTAyMjFmYzU"
-flag: acsc18{DontSlackOff}
-hints:
-  - id: 1
-    hint: Join the Slack server
     cost: ##
 ---
 name: compiler_voodoo1
@@ -338,22 +354,6 @@ hints:
     hint: If only you could follow the entire file transfer and save it
     cost: ##
 ---
-name: hints
-category: Misc
-value: ##
-description: Purchase each hint to get the flag (don't worry, you won't actually lose any points for this hint)
-flag: acsc18{UseHintsWisely}
-hints:
-  - id: 1
-    hint: Combine the next to hints together for the flag
-    cost: ##
-  - id: 2
-    hint: acsc18{Use
-    cost: ##
-  - id: 3
-    hint: HintsWisely}
-    cost: ##
----
 name: jollyroger
 category: Reverse Engineering
 value: ##
@@ -490,7 +490,7 @@ hints:
 name: osintfun
 category: OSINT
 value: ##
-description: Access Sandy Mills-Mills' private server and find the key. Keys.zip password is acsc2018
+description: Access Sandy Mills-Mills' private sftp server and find the key.
 flag: acsc18{90c17db65f1822eb2ecc9a087106de4a}
 hints:
   - id: 1
