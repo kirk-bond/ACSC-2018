@@ -1,4 +1,14 @@
 ---
+name: test_flag
+category: Misc
+value: 5
+description: "The flag is acsc18{TestFlag}"
+flag: acsc18{TestFlag}
+hints:
+  - id: 1
+    hint: If you really had to buy this hint, you don't need the points
+    cost: 5
+---
 name: chat_with_me
 category: Misc
 value: 5
@@ -540,14 +550,14 @@ hints:
     hint: Wait, you said this was a jpg, right? Maybe we should ensure the header is set for a jpg.
     cost: ##
 ---
-name: stupid_steno
+name: stupid_stego
 category: Forensics
 value: ##
 description: "I've got an important secret that I can't let anyone else see. I'll just hide it right here.
 
 File can be found at the link below"
-links: "https://challenge.acsc18.com/files/stupid_steno/flag.jpg"
-flag: acsc18{NotRealyStenography}
+links: "https://challenge.acsc18.com/files/stupid_stego/flag.jpg"
+flag: acsc18{NotRealySteganography}
 hints:
   - id: 1
     hint: The flag isn't encoded or encrytped or anything like that
@@ -559,7 +569,7 @@ hints:
     hint: The flag is just a long string
     cost: ##
 ---
-name: stupid_steno2
+name: stupid_stego2
 category: Forensics
 value: ##
 description: "Well that didn't work out the way I thought it would at first. Lets try to hide it this way.
