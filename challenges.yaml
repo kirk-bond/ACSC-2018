@@ -575,7 +575,7 @@ value: ##
 description: "Well that didn't work out the way I thought it would at first. Lets try to hide it this way.
 
 File can be found at the link below"
-links: "https://challenge.acsc18.com/files/stupid_steno2/stupid_steno2.jpg"
+links: "https://challenge.acsc18.com/files/stupid_stego2/stupid_stego2.jpg"
 flag: acsc18{HiddenInPlainSight}
 hints:
   - id: 1
