@@ -49,7 +49,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set up individual challenges
-COPY setup.sh ./
+COPY setup.sh start.sh ./
 RUN ./setup.sh feeling-lucky feeling-lucky \
         "\nfeeling-lucky\n" \
         "docker run -it --rm --network=none feeling-lucky"
@@ -59,6 +59,9 @@ RUN ./setup.sh man1 man1 \
 RUN ./setup.sh man2 man2 \
         "\nman2\n" \
         "docker run -it --rm --network=none man2"
+RUN ./setup.sh survey survey \
+        "\nsurvey\n" \
+        "docker run -it --rm --network=acsc2018_survey_net survey-implant"
 
 # No fork bombs!
 #RUN echo "overflow1 hard nproc 50" >> /etc/security/limits.conf \
@@ -77,5 +80,4 @@ RUN mkdir -p /var/run/sshd
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 # By default, just run `ssh -D`
-ENTRYPOINT ["chmod", "666", "/var/run/docker.sock"]
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/start.sh"]
