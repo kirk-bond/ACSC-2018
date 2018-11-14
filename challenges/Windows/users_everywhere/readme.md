@@ -6,7 +6,7 @@ Submit the contents of the file at the root of all the zip files
 **NOTE:  Be sure to submit the flag in the correct format ( acsc18{flag} )**
 
 ## Flag
-acsc18{973}
+acsc18{977}
 
 ## Category
 Forensics
@@ -22,7 +22,7 @@ The PowerShell way
 ```powershell
 (get-aduser -Filter *).count
 ```
-1. Flag still needs to be submitted correctly as acsc18{973}
+1. Flag still needs to be submitted correctly as acsc18{977}
 
 ## Resources Required
 * PowerShell (or some langauge)
