@@ -23,11 +23,11 @@ WORKDIR /home/user/
 COPY challenge_files/tee.1p /usr/share/man/man1/tee.1p
 
 # Allow global read to modified man page
-RUN chmod 644 /usr/share/man/man0/strings.h.0p
+RUN chmod 644 /usr/share/man/man1/tee.1p
 
 # timestomp all the things
 RUN find . -exec touch {} \; &&\
-    find /usr/share/man/man0/. -exec touch {} \;
+    find /usr/share/man/man1/. -exec touch {} \;
 
 # Set the default command to bash
 USER root
