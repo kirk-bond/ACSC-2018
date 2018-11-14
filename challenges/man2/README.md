@@ -1,10 +1,10 @@
 ## Problem
 
-Do you know all the things 'Strings' is capable of?  Well, maybe not on all OS, but on this one.
+Do you know all the things the Strings library is capable of?  Well, maybe not on all OS, but on this one.
 
 ## Flag
 
-    acsc18{man_strings_ftw}
+    acsc18{man_strings_is_a_terrible_Google_image_search}
 
 ## Category
 
