@@ -45,8 +45,8 @@ RUN add-apt-repository -y \
 
 # Install Docker
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
-    apt-get install --no-install-recommends -y docker-ce \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    apt-get install --no-install-recommends -y docker-ce && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set up individual challenges
 COPY setup.sh ./
@@ -77,4 +77,5 @@ RUN mkdir -p /var/run/sshd
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 # By default, just run `ssh -D`
+ENTRYPOINT ["chmod", "666", "/var/run/docker.sock"]
 CMD ["/usr/sbin/sshd", "-D"]
