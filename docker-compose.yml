@@ -1,4 +1,11 @@
-version: "3"
+# In order to support static IP for survey-serve container, we need to use version 2. Version 3
+# doesn't recognize the network `gateway` field, but without a gateway defined the static IP
+# assignment doesn't take effect.
+# See:
+#  - https://runnable.com/docker/docker-compose-networking
+#  - https://github.com/docker/docker.github.io/pull/1636#issuecomment-304735171
+version: "2"
+
 services:
 
   aol:
@@ -59,12 +66,9 @@ services:
     build: challenges/survey1/serve
     image: survey-serve
     networks:
-      - survey_net
+      survey_net:
+        ipv4_address: 10.0.0.189
 
-  # TODO: nested docker-compose
-  #survey1:
-  #  build: challenges/survey1
-  #  image: survey1
 
   ssh-host:
     build: challenges/ssh_host
@@ -80,7 +84,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     #deploy:
     #  replicas: 3
-
 
 
   # The following services are for interactive challenges. Competitors will
@@ -106,6 +109,7 @@ services:
     image: survey-implant
     command: /bin/true
 
+
 networks:
   survey_net:
     driver: bridge
@@ -113,3 +117,4 @@ networks:
       driver: default
       config:
         - subnet: 10.0.0.0/24
+          gateway: 10.0.0.1
