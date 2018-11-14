@@ -26,6 +26,17 @@ services:
     ports:
       - 5002:80
 
+  exposed-server-mysql:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: s83PUk9nrd4
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: s83PUk9nrd4
+
   jollyroger:
     build: challenges/jollyroger
     image: jollyroger
@@ -108,6 +119,10 @@ services:
     build: challenges/survey1/implant
     image: survey-implant
     command: /bin/true
+
+
+volumes:
+  db_data:
 
 
 networks:
