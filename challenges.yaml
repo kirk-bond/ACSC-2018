@@ -54,7 +54,7 @@ category: Cryptography
 value: ##
 description: |
   Not a lot to say....find the flag
-  
+
   0x610x630x730x630x310x380x7b0x540x680x69 115077101115115097103101073115 01001001011011100100100001100101011110000100010001100101011000110100001001101001 bkFuZEJhc2V9
 flag: acsc18{ThisMessageIsInHexDecBinAndBase}
 hints:
@@ -128,7 +128,7 @@ hints:
 name: aol
 category: Web Exploitation
 value: ##
-description: "Remember when AOL used the be all the rage? For some reason AOL still thinks it is. So they have released a pretty cool feature, but the system will only allow their own browser to access it. Do you still have one of their free disks? 
+description: "Remember when AOL used the be all the rage? For some reason AOL still thinks it is. So they have released a pretty cool feature, but the system will only allow their own browser to access it. Do you still have one of their free disks?
 
 (NOTE: Please don't actually install this crap on your system)"
 flag: acsc18{DisableCallWaiting}
@@ -161,7 +161,7 @@ hints:
 name: browser_version
 category: Forensics
 value: ##
-description: "A shiny new privilege escalation browser exploit was passed on to you and your team. You are so excited, you can hardly contain yourself and with that, want to let 'er rip as soon as possible. You've been working on escalate your privleges for a while and it seems the time has come! As you begin to prep your launcher, you decide to verify the browser platform version on the target one more time. Submit the browser version. 
+description: "A shiny new privilege escalation browser exploit was passed on to you and your team. You are so excited, you can hardly contain yourself and with that, want to let 'er rip as soon as possible. You've been working on escalate your privleges for a while and it seems the time has come! As you begin to prep your launcher, you decide to verify the browser platform version on the target one more time. Submit the browser version.
 
 NOTE: Be sure to submit the flag in the correct format ( acsc18{flag} )
 
@@ -216,7 +216,10 @@ hints:
 name: crypto-2
 category: Cryptography
 value: ##
-description: Can you crack the cipher? It looks like the server is using RSA to encrypt secrets.
+description: "Can you crack the cipher? It looks like the server is using RSA to encrypt secrets.
+
+challenge.acsc18.com:5001"
+links: "https://challenge.acsc18.com/files/crypto-2/server.py"
 flag: acsc18{what_does_gcd_stand_for_again?}
 hints:
   - id: 1
@@ -229,7 +232,18 @@ hints:
 name: dsp-2
 category: Misc
 value: ##
-description: It's in the file
+description: "https://imgs.xkcd.com/comics/fourier.jpg
+
+To read the file into python:
+```python
+f = open('dsp_2.iq', 'rb')
+
+# read the IQ data from the file as np.complex
+rx_signal = scipy.fromfile(f, dtype=np.complex)
+
+f.close()
+```"
+links: "https://challenge.acsc18.com/files/dsp-2/dsp_2.iq"
 flag: acsc18{pwn_the_rfz}
 hints:
   - id: 1
@@ -367,7 +381,10 @@ hints:
 name: jollyroger
 category: Reverse Engineering
 value: ##
-description: It looks like this smart device provides an unauthenticated web portal to update the firmware. They say that they cryptographically sign their code so there's no need to authenticate, but I have a hunch it's not as secure as they think. Can you find a way to upload a modified firmware image?
+description: "It looks like this smart device provides an unauthenticated web portal to update the firmware. The developers say that they cryptographically sign their code so there's no need to authenticate, but I have a hunch it's not as secure as they think. Can you find a way to upload a modified firmware image?
+
+challenge.acsc18.com:5003"
+links: "https://challenge.acsc18.com/files/jollyroger/firmware"
 flag: acsc18{i_thought_crcs_were_secure}
 hints:
   - id: 1
@@ -390,7 +407,7 @@ name: leaky_crypto
 category: Cryptography
 value: ##
 description: "We encrypted the flag with AES-ECB and a secret key and got the following:  b7695884638a2d5551c0a1ed35142c939a60791aba95dbaedd2994d677907602a0779b858857a3a3d04304fcde225ce7228993a1a0cd57ab37425fc7b32d4ca775053f0b39dccb6e9eb88ae40ec8aa9f
-  
+
 Unfortunately we lost the key. On the bright side though we did encrypt a bunch of other test flags with the same key before we lost it. Can you help us out?
 
 File can be found at the link below"
@@ -410,7 +427,7 @@ hints:
 name: lsb_stego
 category: Forensics
 value: ##
-description: "Check out the content hosted at server:13773"
+description: "Check out the content hosted at https://challenge.acsc18.com:5004"
 flag: acsc18{98hcommunicationslocatorinterceptor}
 hints:
   - id: 1
@@ -532,7 +549,7 @@ hints:
 name: shape_color
 category: Forensics
 value: ##
-description: "You were given a file that is supposed to be a picture, however, you can open it and don't know why at the moment. Normally you would just move on to something else, however, you can't except defeat and are determined to get it open. Once you finally get it open, submit the flag as the color of the shape in the jpg. 
+description: "You were given a file that is supposed to be a picture, however, you can open it and don't know why at the moment. Normally you would just move on to something else, however, you can't except defeat and are determined to get it open. Once you finally get it open, submit the flag as the color of the shape in the jpg.
 
 NOTE: Be sure to submit the flag in the correct format ( acsc18{YourFlag} )
 
@@ -613,7 +630,7 @@ NOTE: When you submit it, submit it in the correct format though ( acsc18{YourFl
 
 File can be found at the link below"
 links: "https://challenge.acsc18.com/files/whats_going_on_here/suspect_registry.zip"
-flag: 
+flag:
   acsc18{178.89.159.34}
   acsc18{178.89.159.37}
 hints:
@@ -668,7 +685,7 @@ hints:
 name: zippity_doo_dah
 category: Forensics
 value: ##
-description: "You were given another zip file off of the hard drive we were analyzing. We also found a text file with it called 'password.txt' and the password was 'powershell'. When we unzipped the file with the password, there was another zip, and another zip. It seems that this file is zipped over and over again with this same password. 
+description: "You were given another zip file off of the hard drive we were analyzing. We also found a text file with it called 'password.txt' and the password was 'powershell'. When we unzipped the file with the password, there was another zip, and another zip. It seems that this file is zipped over and over again with this same password.
 
 Submit the contents of the file at the root of all the zip files NOTE: Be sure to submit the flag in the correct format ( acsc18{YourFlag} )
 
