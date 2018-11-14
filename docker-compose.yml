@@ -55,6 +55,12 @@ services:
     ports:
       - 5008:80
 
+  survey-serve:
+    build: challenges/survey1/serve
+    image: survey-serve
+    networks:
+      - survey_net
+
   # TODO: nested docker-compose
   #survey1:
   #  build: challenges/survey1
@@ -69,6 +75,7 @@ services:
       - feeling-lucky
       - man1
       - man2
+      - survey-implant
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     #deploy:
@@ -93,3 +100,16 @@ services:
     build: challenges/man2
     image: man2
     command: /bin/true
+
+  survey-implant:
+    build: challenges/survey1/implant
+    image: survey-implant
+    command: /bin/true
+
+networks:
+  survey_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.0/24
