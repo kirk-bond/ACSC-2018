@@ -84,28 +84,9 @@ hints:
     hint: Look at the dll export table using a tool. (dump bin, ida, dependency walker)
     cost: 30
 ---
-name: Motivate_Me
-category: Cryptography
-value: ##
-description: "We found a set of great motivational quotes and decided to encrypt each of them using the flag.
-
-File can be found at the link below"
-links: "https://challenge.acsc18.com/files/Motivate_Me/WordsToLiveBy.txt"
-flag: acsc18{TheyAreOneTimeForAReason}
-hints:
-  - id: 1
-    hint: The flag follows the standard format so the first 7 characters of each line should be pretty easy
-    cost: ##
-  - id: 2
-    hint: A simple XOR is used to encrypt each line
-    cost: ##
-  - id: 3
-    hint: Fortunately with English text it's pretty easy to guess the next letter
-    cost: ##
----
 name: SANs
 category: Forensics
-value: ##
+value: 80
 description: "Pretty sure there's more information to this report then meets the eye.
 
 File can be found at the link below"
@@ -114,13 +95,13 @@ flag: acsc18{TalkAboutLayersOfSecurity}
 hints:
   - id: 1
     hint: A pdf file is made up of many parts, there's a unique part in this one when you look
-    cost: ##
+    cost: 20
   - id: 2
     hint: You can embed a file within an image file pretty easily
-    cost: ##
+    cost: 20
   - id: 3
     hint: Just convert it
-    cost: ##
+    cost: 10
 ---
 name: aol
 category: Web Exploitation
@@ -139,7 +120,7 @@ hints:
 ---
 name: ascii_art
 category: Misc
-value: ##
+value: 40
 description: "No real trick here...
 
 !!!!!!!Flag starts here !!!!!!! ____ ____ _____ ____ ____ _____ _____ _____ ______ _____ ________ ____ ______ ________ ______ ( ) / ) / \ / ) / / / _ \ / ( / _ \ ( _ \ ( ) ( ) ( ) ( __ \ ( ) ) \ / /\ \ / / ( ( / / / /) ) ( () ) ) ) ( () ) ) () ) | | ) ) / /\ \ ) () ) ) ) ( ( ( () ) ( ( _ \ ( ( //( ( \ _ / / / \ _ / \ / | | ( ( ( () ) ( / ( ( \ \ ) ( ( ( ) ) ( ( ) ) / / \ \ \ \ / / \ \ / _ \ | | ) ) ) ( ) \ \ _ ) ) / / / /\ \ \ _ _/ / \ _ ( ( ( () ) ) )__ ( () ) ) () ) | | ( ( / /\ \ ( ( \ _)) ( ( ____( ( /( )\ _) // _) /\ _____/ (( _/ (/ /( /\ /( )\ )) _/ /\ )______) !!!!!!End of Flag!!!!!!!"
@@ -147,17 +128,17 @@ flag: acsc18{8BITART}
 hints:
   - id: 1
     hint: Many ASCII art characters have a flat top
-    cost: ##
+    cost: 5
   - id: 2
     hint: Each line is an equal length of characters
-    cost: ##
+    cost: 10
   - id: 3
     hint: Break the lines at postion 147
-    cost: ##
+    cost: 15
 ---
 name: browser_version
 category: Forensics
-value: ##
+value: 30
 description: "A shiny new privilege escalation browser exploit was passed on to you and your team. You are so excited, you can hardly contain yourself and with that, want to let 'er rip as soon as possible. You've been working on escalate your privleges for a while and it seems the time has come! As you begin to prep your launcher, you decide to verify the browser platform version on the target one more time. Submit the browser version.
 
 NOTE: Be sure to submit the flag in the correct format ( acsc18{flag} )
@@ -168,14 +149,14 @@ flag: acsc18{58.0}
 hints:
   - id: 1
     hint: If I was Firefox, where would I keep this data?
-    cost: ##
+    cost: 15
   - id: 2
     hint: Maybe you can loop through each file looking for a keyword or two.
-    cost: ##
+    cost: 5
 ---
 name: compiler_voodoo1
 category: Reverse Engineering
-value: ##
+value: 150
 description: "Get the password and submit it for points.
 
 File can be found at the link below"
@@ -184,7 +165,7 @@ flag: acsc18{llvm_is_better_than_gcc}
 ---
 name: compiler_voodoo2
 category: Reverse Engineering
-value: ##
+value: 180
 description: "Get the password and submit it for points.
 
 File can be found at the link below"
@@ -281,32 +262,32 @@ hints:
 ---
 name: exposed_server
 category: Web Exploit
-value: ##
+value: 60
 description: Just another exposed web server. You can find the flag in /etc/flag.txt. NOTE NO TOOLS ARE REQUIRED FOR THIS CHALLENGE!
 flag: acsc18{StillHaventPatched}
 hints:
   - id: 1
     hint: Wordpress gets lots of extra functionality from the plug-ins a site might have installed
-    cost: ##
+    cost: 10
   - id: 2
     hint: A number of websites track vulnerabilities associated with these plugins and other software
-    cost: ##
+    cost: 5
   - id: 3
     hint: The site-editor plugin has a lot of power over Wordpress
-    cost: ##
+    cost: 25
 ---
 name: feeling_lucky
 category: Reverse Engineering
-value: ##
+value: 60
 description: You found the source code to a slot machine, can you use your insider knowledge to win big?
 flag: acsc18{JACKPOT!!}
 hints:
   - id: 1
     hint: Check out the helper_pullHandle function
-    cost: ##
+    cost: 15
   - id: 2
     hint: Look at the helper_getRandLetter function
-    cost: ##
+    cost: 15
 ---
 name: find_the_key
 category: OSINT
@@ -402,7 +383,7 @@ hints:
 ---
 name: leaky_crypto
 category: Cryptography
-value: ##
+value: 50
 description: "We encrypted the flag with AES-ECB and a secret key and got the following:  b7695884638a2d5551c0a1ed35142c939a60791aba95dbaedd2994d677907602a0779b858857a3a3d04304fcde225ce7228993a1a0cd57ab37425fc7b32d4ca775053f0b39dccb6e9eb88ae40ec8aa9f
 
 Unfortunately we lost the key. On the bright side though we did encrypt a bunch of other test flags with the same key before we lost it. Can you help us out?
@@ -413,13 +394,13 @@ flag: acsc18{encryption_is_great_but_only_if_it_doesnt_leak_like_my_old_pipes}
 hints:
   - id: 1
     hint: AES works on fixed size blocks
-    cost: ##
+    cost: 15
   - id: 2
     hint: Blocks that are exactly the same produce the same encrypted output
-    cost: ##
+    cost: 15
   - id: 3
     hint: Remember that there are two hex characters for each plaintext character
-    cost: ##
+    cost: 5
 ---
 name: lsb_stego
 category: Forensics
@@ -657,7 +638,7 @@ hints:
 ---
 name: who_is_this_cat?
 category: Forensics
-value: ##
+value: 25
 description: "Another section is in need of help looking for a potenitally rogue system and all they have is a MAC of 00:0c:29:61:c1:89. We informed them we may be able to assist them in finding the computername of the system tied to the MAC somewhere in our traffic captures but we can't make any promises.
 
 NOTE: Be sure to submit the flag in the correct format ( acsc18{YourFlag} )
@@ -668,14 +649,14 @@ flag: acsc18{ROCKETMAN-PC}
 hints:
   - id: 1
     hint: Wireshark is a wonderful asset.
-    cost: ##
+    cost: 5
   - id: 2
     hint: Maybe NetBIOS can help us.
-    cost: ##
+    cost: 7
 ---
 name: zippity_doo_dah
 category: Forensics
-value: ##
+value: 20
 description: "You were given another zip file off of the hard drive we were analyzing. We also found a text file with it called 'password.txt' and the password was 'powershell'. When we unzipped the file with the password, there was another zip, and another zip. It seems that this file is zipped over and over again with this same password.
 
 Submit the contents of the file at the root of all the zip files NOTE: Be sure to submit the flag in the correct format ( acsc18{YourFlag} )
@@ -686,10 +667,10 @@ flag: acsc18{too_much_sauce}
 hints:
   - id: 1
     hint: Only do it manually if you have months to spare
-    cost: ##
+    cost: 5
   - id: 2
     hint: Maybe a "For" loop will help
-    cost: ##
+    cost: 5
 ---
 name: Linux1
 category: Linux
