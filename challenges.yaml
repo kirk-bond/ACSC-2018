@@ -70,7 +70,7 @@ hints:
 ---
 name: DLLicious
 category: Reverse Engineering
-value: ##
+value: 80
 description: "You found a suspicious looking dll on your machine. Can you figure out what its doing?
 
 File can be found at the link below"
@@ -78,14 +78,11 @@ links: "https://challenge.acsc18.com/files/DLLicious/acsc.dll"
 flag: acsc18{dont you love windows}
 hints:
   - id: 1
-    hint: Direct them to look at dll documentation on MSDN (https://docs.microsoft.com/en-us/cpp/build/dlls-in-visual-cpp?view=vs-2017)
-    cost: ##
+    hint: Look at dll documentation on MSDN (https://docs.microsoft.com/en-us/cpp/build/dlls-in-visual-cpp?view=vs-2017)
+    cost: 20
   - id: 2
-    hint: Direct them to look at the dll export table using a tool. (dump bin, ida, dependency walker)
-    cost: ##
-  - id: 3
-    hint: Explain what rundll does.
-    cost: ##
+    hint: Look at the dll export table using a tool. (dump bin, ida, dependency walker)
+    cost: 30
 ---
 name: Motivate_Me
 category: Cryptography
@@ -264,7 +261,7 @@ hints:
 ---
 name: decoder
 category: Scripting
-value: ##
+value: 60
 description: "Encryption is hard, encoding is easy, but not very secure. So let's just encode A LOT of times! Don't worry, we even told you what encoding method we used on each pass (encoding...).
 
 1.  base64 = base64 encoded string
@@ -277,10 +274,10 @@ flag: acsc18{ItsOnlySlightlyScrambled}
 hints:
   - id: 1
     hint: Seperate the identified encoding method from the encoded string
-    cost: ##
+    cost: 10
   - id: 2
     hint: Keep looping until you don't recoginize the encoding method given (hint....it's the flag!)
-    cost: ##
+    cost: 40
 ---
 name: exposed_server
 category: Web Exploit
@@ -426,19 +423,19 @@ hints:
 ---
 name: lsb_stego
 category: Forensics
-value: ##
+value: 40
 description: "Check out the content hosted at https://challenge.acsc18.com:5004"
 flag: acsc18{98hcommunicationslocatorinterceptor}
 hints:
   - id: 1
     hint: So you've checked the source for the web page and ran simple forensics tests on the content?
-    cost: ##
+    cost: 5
   - id: 2
     hint: There's more than it seems to that paddle.
-    cost: ##
+    cost: 10
   - id: 3
     hint: Stego
-    cost: ##
+    cost: 15
 ---
 name: man1
 category: Linux
@@ -513,19 +510,16 @@ hints:
 ---
 name: osintfun
 category: OSINT
-value: ##
+value: 80
 description: Access Sandy Mills-Mills' private sftp server and find the key.
 flag: acsc18{90c17db65f1822eb2ecc9a087106de4a}
 hints:
   - id: 1
     hint: Twitter
-    cost: ##
+    cost: 20
   - id: 2
-    hint: Read the feed
-    cost: ##
-  - id: 3
     hint: Username re-use?
-    cost: ##
+    cost: 20
 ---
 name: prize
 category: Web Exploitation
@@ -545,7 +539,7 @@ hints:
 ---
 name: shape_color
 category: Forensics
-value: ##
+value: 45
 description: "You were given a file that is supposed to be a picture, however, you can open it and don't know why at the moment. Normally you would just move on to something else, however, you can't except defeat and are determined to get it open. Once you finally get it open, submit the flag as the color of the shape in the jpg.
 
 NOTE: Be sure to submit the flag in the correct format ( acsc18{YourFlag} )
@@ -556,13 +550,13 @@ flag: acsc18{orange}
 hints:
   - id: 1
     hint: Maybe we need a hex editor.
-    cost: ##
+    cost: 5
   - id: 2
     hint: I wonder if the file header information is correct?
-    cost: ##
+    cost: 10
   - id: 3
     hint: Wait, you said this was a jpg, right? Maybe we should ensure the header is set for a jpg.
-    cost: ##
+    cost: 15
 ---
 name: stupid_stego
 category: Forensics
@@ -699,7 +693,7 @@ hints:
 ---
 name: Linux1
 category: Linux
-value: ##
+value: 20
 description: "Find the longest line (most characters) in linux1.
 
 Logon to 52.33.202.4 with the username 'player' using the certificate in the link below"
@@ -708,14 +702,14 @@ flag: acsc18{ProvincialRadiationSickness}
 hints:
   - id: 1
     hint: awk has a number of functions besides just printing out parts of a string
-    cost: ##
+    cost: 10
   - id: 2
     hint: It's possible to sort numericly
-    cost: ##
+    cost: 5
 ---
 name: Linux2
 category: Linux
-value: ##
+value: 20
 description: "How many characters are there in the 3rd column of words in linux2? (Ensure you submit the flag with the acsc18{<CharacterCount>}.
 
 Logon to 52.33.202.4 with the username 'player' using the certificate in the link below"
@@ -724,14 +718,14 @@ flag: acsc18{71604}
 hints:
   - id: 1
     hint: The cut command allows you to pull out a particular column
-    cost: ##
+    cost: 7
   - id: 2
     hint: Word count can tell you a variety of statistics
-    cost: ##
+    cost: 7
 ---
 name: Linux3
 category: Linux
-value: ##
+value: 20
 description: "What is the most common 12th chacter in the file linux3.  Case Matters! (Ensure you submit the flag with the acsc18{<Character>}.
 
 Logon to 52.33.202.4 with the username 'player' using the certificate in the link below"
@@ -740,17 +734,17 @@ flag: acsc18{e}
 hints:
   - id: 1
     hint: The cut command allows you to pull out a particular character
-    cost: ##
+    cost: 7
   - id: 2
     hint: You may need to sort things
-    cost: ##
+    cost: 3
   - id: 3
     hint: You can get the count of unique characters
-    cost: ##
+    cost: 3
 ---
 name: Linux4
 category: Linux
-value: ##
+value: 20
 description: "What is the name of the file in the Linux4 folder with an md5 hash of 7ae8ef906919add4686419b22ea2e874.
 
 Logon to 52.33.202.4 with the username 'player' using the certificate in the link below"
@@ -759,11 +753,11 @@ flag: acsc18{File350}
 hints:
   - id: 1
     hint: md5sum can hash a file
-    cost: ##
+    cost: 10
 ---
 name: Linux5
 category: Linux
-value: ##
+value: 20
 description: "Just find the flag in the folder Linux5.
 
 Logon to 52.33.202.4 with the username 'player' using the certificate in the link below"
@@ -772,11 +766,11 @@ flag: acsc18{DontForgetHiddenFiles}
 hints:
   - id: 1
     hint: I promise, it's in the folder
-    cost: ##
+    cost: 15
 ---
 name: Linux6
 category: Linux
-value: ##
+value: 30
 description: "What version of yum is being used on the VM?  Note:  Ensure you use the acsc18{#.#.#-###} format.
 
 Logon to 52.33.202.4 with the username 'player' using the certificate in the link below"
@@ -785,11 +779,11 @@ flag: acsc18{3.4.3-158}
 hints:
   - id: 1
     hint: Check the man file for yum
-    cost: ##
+    cost: 15
 ---
 name: Linux7
 category: Linux
-value: ##
+value: 20
 description: "The flag is contained in a file somewhere on the system (Not in the users folder).
 
 Logon to 52.33.202.4 with the username 'player' using the certificate in the link below"
@@ -798,7 +792,7 @@ flag: acsc18{HopeYouUsedFind}
 hints:
   - id: 1
     hint: You can specify that you are looking for a file with the find command
-    cost: ##
+    cost: 10
   - id: 2
     hint: You can execute commands with find as well
-    cost: ##
+    cost: 5
