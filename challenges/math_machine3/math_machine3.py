@@ -44,7 +44,9 @@ def Num2Word(intNumber):
         OUTPUT = OUTPUT + " " + SINGLE.get(str(HUNDREDS)) + " Hundred"
         intNumber = intNumber - (HUNDREDS * 100)
 
-    if intNumber < 20:
+    if intNumber == 0:
+        return OUTPUT
+    elif intNumber < 20:
         OUTPUT = OUTPUT + " " + SINGLE.get(str(intNumber))
     else:
         TENS = intNumber // 10
@@ -85,12 +87,12 @@ def clientthread(conn):
         b = randint(1,9999)
         answer = a * b
         conn.send(Num2Word(a) + " Times " + Num2Word(b) + '\n')
+      # Division
       elif x == 4:
         a = randint(1,100)
         b = randint(1,99)
         answer = b
         conn.send(Num2Word(b*a) + " Divided By " + Num2Word(a) + '\n')
-
 
       #Get user answer
       userAnswer = conn.recv(1024)
