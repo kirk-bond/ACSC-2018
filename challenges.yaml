@@ -38,16 +38,16 @@ hints:
 ---
 name: Anchovy_Dressing
 category: Cryptography
-value: ##
+value: 30
 description: 57n7w3{dkm9a9m6gp97c99n98m9nndib}
 flag: acsc18{Ipreferbluecheesedressing}
 hints:
   - id: 1
     hint: This is one of the most basic forms of encryption
-    cost: ##
+    cost: 5
   - id: 2
     hint: Notice that numbers are encrypted too
-    cost: ##
+    cost: 10
 ---
 name: Crypto 1
 category: Cryptography
@@ -105,7 +105,7 @@ hints:
 ---
 name: aol
 category: Web Exploitation
-value: ##
+value: 35
 description: "Remember when AOL used the be all the rage? For some reason AOL still thinks it is. So they have released a pretty cool feature, but the system will only allow their own browser to access it. Do you still have one of their free disks?
 
 (NOTE: Please don't actually install this crap on your system)"
@@ -113,10 +113,10 @@ flag: acsc18{DisableCallWaiting}
 hints:
   - id: 1
     hint: Browsers tell the servers alot about themselves. Can you manipulate that?
-    cost: ##
+    cost: 5
   - id: 2
     hint: User-agent strings can be manipulated pretty easily
-    cost: ##
+    cost: 20
 ---
 name: ascii_art
 category: Misc
@@ -291,20 +291,20 @@ hints:
 ---
 name: find_the_key
 category: OSINT
-value: ##
+value: 30
 description: Enter the ip address of the server that is hosting the SSL certificate with the serial number 03:0a:d7:bc:48:8b:05:b9:4f:db:25:70:92:72:c3:98:11:20. Ensure you use to correct flag format acsc18{X.X.X.X}
 flag: acsc18{166.62.37.150}
 hints:
   - id: 1
     hint: There are a few services that continaully scan the Internet
-    cost: ##
+    cost: 5
   - id: 2
     hint: For Shodan at least, you can't just search for the SSL serial number without specifiying a field
-    cost: ##
+    cost: 15
 ---
 name: force
 category: Forensics
-value: ##
+value: 25
 description: "Yoda was wise but Luke managed to make it into more movies.
 
 File can be found at the link below"
@@ -313,17 +313,17 @@ flag: acsc18{TheForceIsStrong}
 hints:
   - id: 1
     hint: It's a pretty big file for such a small web page
-    cost: ##
+    cost: 5
   - id: 2
     hint: Is it really a web page?
-    cost: ##
+    cost: 5
   - id: 3
     hint: See what type of file it is, and try opening it with another program
-    cost: ##
+    cost: 7
 ---
 name: forgot_something
 category: Forensics
-value: ##
+value: 35
 description: "The flag is right there, just open the image.
 
 File can be found at the link below"
@@ -332,14 +332,14 @@ flag: acsc18{JustALittleShort}
 hints:
   - id: 1
     hint: Most file types follow a specific format
-    cost: ##
+    cost: 5
   - id: 2
     hint: What does the beginning of a jpg look like?
-    cost: ##
+    cost: 10
 ---
 name: ftp_capture
 category: Forensics
-value: ##
+value: 35
 description: "Plaintext FTP transfer...what could be easier
 
 File can be found at the link below"
@@ -348,13 +348,13 @@ flag: acsc18{AtLeastItsNotEncrypted}
 hints:
   - id: 1
     hint: Rememeber FTP has a seperate data chanel
-    cost: ##
+    cost: 5
   - id: 2
     hint: Is it possible to search for the header of a jpg file?
-    cost: ##
+    cost: 10
   - id: 3
     hint: If only you could follow the entire file transfer and save it
-    cost: ##
+    cost: 5
 ---
 name: jollyroger
 category: Reverse Engineering
@@ -478,16 +478,16 @@ hints:
 ---
 name: obscure_security
 category: Web Exploitation
-value: ##
+value: 30
 description: The server guy has recently upgrade the security on the web portal to ensure that no one can get the flag. Prove him wrong
 flag: acsc18{ObscurityIsNotSecurity}
 hints:
   - id: 1
     hint: What is the javascript function doing
-    cost: ##
+    cost: 10
   - id: 2
     hint: Where do you get redirected to?
-    cost: ##
+    cost: 10
 ---
 name: osintfun
 category: OSINT
@@ -504,19 +504,19 @@ hints:
 ---
 name: prize
 category: Web Exploitation
-value: ##
+value: 45
 description: Business has been going great and we are rapidly approaching our 1 millionth visitor. If you happen to be that lucky person, we've got a great prize for you
 flag: acsc18{WinnerWinnerChickenDinner}
 hints:
   - id: 1
     hint: Cookies aren't just tasty, they are useful too
-    cost: ##
+    cost: 5
   - id: 2
     hint: That second cookie doesn't look encrypted, maybe encoded?
-    cost: ##
+    cost: 10
   - id: 3
     hint: Is that a hash in there too?
-    cost: ##
+    cost: 10
 ---
 name: shape_color
 category: Forensics
@@ -618,7 +618,7 @@ hints:
 ---
 name: where_am_i2
 category: Forensics
-value: ##
+value: 25
 description: "Check out this fantastic new website that some company just bough. What city are they located in? NOTE: No you can't just search for the flag you cheaters. The flag is obvious when you find it, but is not currently in the correct format. When you submit it, submit it in the correct format though ( acsc18{YourFlag} )
 
 File can be found at the link below"
@@ -628,13 +628,13 @@ flag: acsc18{WalaWala}
 hints:
   - id: 1
     hint: I imagine the address is on the contact page
-    cost: ##
+    cost: 5
   - id: 2
     hint: What changes they browsed to the contact page?
-    cost: ##
+    cost: 5
   - id: 3
     hint: What can tell you all about the encryption they are using? It also includes some location details.
-    cost: ##
+    cost: 7
 ---
 name: who_is_this_cat?
 category: Forensics
