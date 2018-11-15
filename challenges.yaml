@@ -51,7 +51,7 @@ hints:
 ---
 name: Crypto 1
 category: Cryptography
-value: ##
+value: 30
 description: |
   Not a lot to say....find the flag
 
@@ -60,13 +60,13 @@ flag: acsc18{ThisMessageIsInHexDecBinAndBase}
 hints:
   - id: 1
     hint: This isn't actually encrypted
-    cost: ##
+    cost: 5
   - id: 2
     hint: There's four types of encoding here
-    cost: ##
+    cost: 5
   - id: 3
     hint: You have Hex, Decimal, Binary, and Base64 text to combine
-    cost: ##
+    cost: 10
 ---
 name: DLLicious
 category: Reverse Engineering
@@ -174,7 +174,7 @@ flag: acsc18{one_inst_allowed_per_bb}
 ---
 name: crackme-1
 category: Reverse Engineering
-value: ##
+value: 50
 description: "How good are you at picking locks? Try your luck here.
 
 File can be found at the link below"
@@ -183,17 +183,17 @@ flag: acsc18{wonphpwvyxnyekmq}
 hints:
   - id: 1
     hint: Can you figure out what this program is doing without looking at its source code?
-    cost: ##
+    cost: 5
   - id: 2
     hint: Use a dissambler or a debugger to make sense of the machine code.
-    cost: ##
+    cost: 10
   - id: 3
     hint: Locate the decode function and figure out what it does with your inputs.
-    cost: ##
+    cost: 10
 ---
 name: crypto-2
 category: Cryptography
-value: ##
+value: 100
 description: "Can you crack the cipher? It looks like the server is using RSA to encrypt secrets.
 
 challenge.acsc18.com:5001"
@@ -202,10 +202,10 @@ flag: acsc18{what_does_gcd_stand_for_again?}
 hints:
   - id: 1
     hint: These number are too big to factor... What else can you do?
-    cost: ##
+    cost: 15
   - id: 2
     hint: Is calculating the GCD of two numbers easier than factoring one?
-    cost: ##
+    cost: 35
 ---
 name: dsp-2
 category: Misc
@@ -358,7 +358,7 @@ hints:
 ---
 name: jollyroger
 category: Reverse Engineering
-value: ##
+value: 150
 description: "It looks like this smart device provides an unauthenticated web portal to update the firmware. The developers say that they cryptographically sign their code so there's no need to authenticate, but I have a hunch it's not as secure as they think. Can you find a way to upload a modified firmware image?
 
 challenge.acsc18.com:5003"
@@ -449,32 +449,32 @@ hints:
 ---
 name: math_machine2
 category: Scripting
-value: ##
+value: 50
 description: Think you're good at math? Answer 100 simple problems in 2 minutes and you'll get your flag.
 flag: acsc18{SameScriptMinorChange}
 hints:
   - id: 1
     hint: There is probably a way to automate this task and complete it a lot faster than you can
-    cost: ##
+    cost: 5
   - id: 2
     hint: Try seperating the input recieved by each new line
-    cost: ##
+    cost: 20
 ---
 name: math_machine3
 category: Scripting
-value: ##
+value: 65
 description: Same as last time, but just a little bit of a twist.
 flag: acsc18{WordsMatter}
 hints:
   - id: 1
     hint: There is probably a way to automate this task and complete it a lot faster than you can
-    cost: ##
+    cost: 5
   - id: 2
     hint: Try seperating the input recieved by spaces
-    cost: ##
+    cost: 10
   - id: 3
     hint: Break each word pair into is respective value to solve the problem
-    cost: ##
+    cost: 20
 ---
 name: obscure_security
 category: Web Exploitation
@@ -541,7 +541,7 @@ hints:
 ---
 name: stupid_stego
 category: Forensics
-value: ##
+value: 20
 description: "I've got an important secret that I can't let anyone else see. I'll just hide it right here.
 
 File can be found at the link below"
@@ -550,17 +550,17 @@ flag: acsc18{NotRealySteganography}
 hints:
   - id: 1
     hint: The flag isn't encoded or encrytped or anything like that
-    cost: ##
+    cost: 5
   - id: 2
     hint: Try looking behind the picture
-    cost: ##
+    cost: 5
   - id: 3
     hint: The flag is just a long string
-    cost: ##
+    cost: 5
 ---
 name: stupid_stego2
 category: Forensics
-value: ##
+value: 50
 description: "Well that didn't work out the way I thought it would at first. Lets try to hide it this way.
 
 File can be found at the link below"
@@ -569,13 +569,13 @@ flag: acsc18{HiddenInPlainSight}
 hints:
   - id: 1
     hint: The flag isn't encoded or encrytped or anything like that
-    cost: ##
+    cost: 5
   - id: 2
     hint: Try some simple color adjustments to the image
-    cost: ##
+    cost: 15
   - id: 3
     hint: The "Threshold" function can do some pretty cool stuff
-    cost: ##
+    cost: 15
 ---
 name: survey1
 category: Misc
