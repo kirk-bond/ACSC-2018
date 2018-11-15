@@ -442,35 +442,32 @@ hints:
 ---
 name: man1
 category: Linux
-value: ##
-description: Did you know man pages have their own markup language? Check out the man page for strings on this alpine linux docker.
+value: 35
+description: Did you know man pages have their own markup language? Check out the man page for tee on this alpine linux docker.
+flag: acsc18{just_when_you_thought_you_knew_what_it_does}
+hints:
+  - id: 1
+    hint: What's the command to view the man page for a command?
+    cost: 10
+  - id: 2
+    hint: man tee
+    cost: 25
+---
+name: man2
+category: Linux
+value: 40
+description: Do you know all the things the Strings library is capable of? Well, maybe not on all OS, but on this one.
 flag: acsc18{man_strings_is_a_terrible_Google_image_search}
 hints:
   - id: 1
     hint: Some markup languages hide comments from display when rendered.
-    cost: ##
+    cost: 5
   - id: 2
-    hint: Try to view the source file
-    cost: ##
+    hint: Try to view the man source file
+    cost: 15
   - id: 3
-    hint: cat /usr/share/man/man0/strings/h.0p
-    cost: ##
----
-name: man2
-category: Linux
-value: ##
-description: Do you know all the things 'Strings' is capable of? Well, maybe not on all OS, but on this one.
-flag: acsc18{man_strings_ftw}
-hints:
-  - id: 1
-    hint: Man, that problem statement was not much to go off of!
-    cost: ##
-  - id: 2
-    hint: How do you find out more about a program? Sometimes --help, but not here.
-    cost: ##
-  - id: 3
-    hint: man strings
-    cost: ##
+    hint: cat /usr/share/man/man0/strings.h.0p
+    cost: 20
 ---
 name: math_machine2
 category: Scripting
@@ -607,19 +604,19 @@ hints:
 ---
 name: survey1
 category: Misc
-value: ##
+value: 40
 description: Connect to to the implant, survey your environment, and send me the flag.
 flag: acsc18{webheader_owngoal}
 hints:
   - id: 1
     hint: Look at your network interfaces and try to see if there are any other devices on the local network.
-    cost: ##
+    cost: 5
   - id: 2
-    hint: Try to connect to the other device with a browser.
-    cost: ##
+    hint: Try to connect to the other device like a browser.
+    cost: 5
   - id: 3
     hint: Look at the header data.
-    cost: ##
+    cost: 20
 ---
 name: whats_going_on_here
 category: Forensics
