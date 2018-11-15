@@ -205,11 +205,11 @@ hints:
     cost: 15
   - id: 2
     hint: Is calculating the GCD of two numbers easier than factoring one?
-    cost: 35
+    cost: 45
 ---
 name: dsp-2
 category: Misc
-value: ##
+value: 180
 description: "https://imgs.xkcd.com/comics/fourier.jpg
 
 To read the file into python:
@@ -226,19 +226,19 @@ flag: acsc18{pwn_the_rfz}
 hints:
   - id: 1
     hint: This is an OFDM burst
-    cost: ##
+    cost: 20
   - id: 2
     hint: Autocorrelation is your friend
-    cost: ##
+    cost: 20
   - id: 3
     hint: The FFT size is 128
-    cost: ##
+    cost: 20
   - id: 4
     hint: There are 16 guard subcarriers, no DC subcarrier
-    cost: ##
+    cost: 20
   - id: 5
     hint: The subcarriers are QPSK modulated
-    cost: ##
+    cost: 20
 ---
 name: decoder
 category: Scripting
@@ -367,19 +367,19 @@ flag: acsc18{i_thought_crcs_were_secure}
 hints:
   - id: 1
     hint: The header is 32 bytes long, followed by an ELF file.
-    cost: ##
+    cost: 10
   - id: 2
     hint: They're using a generic crc32 checksum to verify data integrity.
-    cost: ##
+    cost: 20
   - id: 3
     hint: There is only one checksum, present in both the header and the body of the image.
-    cost: ##
+    cost: 20
   - id: 4
     hint: The code segment of the ELF is being checksummed. It looks like some bytes of the code segment are being skipped.
-    cost: ##
+    cost: 20
   - id: 5
     hint: The structure of the proprietary header is struct header { uint32_t magic; uint32_t version; uint32_t num_cksums; uint32_t c1_offset; uint32_t c1_cksum; uint8_t pad[12]; };
-    cost: ##
+    cost: 20
 ---
 name: leaky_crypto
 category: Cryptography
@@ -523,7 +523,7 @@ category: Forensics
 value: 45
 description: "You were given a file that is supposed to be a picture, however, you can open it and don't know why at the moment. Normally you would just move on to something else, however, you can't except defeat and are determined to get it open. Once you finally get it open, submit the flag as the color of the shape in the jpg.
 
-NOTE: Be sure to submit the flag in the correct format ( acsc18{YourFlag} )
+NOTE: Be sure to submit the flag in the correct format ( acsc18{lowercasecolor} )
 
 File can be found at the link below"
 links: "https://challenge.acsc18.com/files/shape_color/shape_color.jpg"
