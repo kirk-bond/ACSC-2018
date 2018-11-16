@@ -28,4 +28,4 @@ RUN chown user:user ./*
 USER user
 EXPOSE 5000
 
-CMD ["./server.py"]
+CMD ["python3", "-u", "server.py"]

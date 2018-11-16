@@ -31,4 +31,4 @@ RUN chmod 444 /flag.txt && \
 USER user
 EXPOSE 5000
 
-CMD ["./app.py"]
+CMD ["python3", "-u", "app.py"]

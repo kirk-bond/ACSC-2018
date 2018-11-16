@@ -40,6 +40,7 @@ services:
   jollyroger:
     build: challenges/jollyroger
     image: jollyroger
+    privileged: true
     ports:
       - 5003:5000
 
