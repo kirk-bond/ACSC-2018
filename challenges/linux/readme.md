@@ -23,7 +23,7 @@ acsc18{ProvincialRadiationSickness}
 How many characters are there in the 3rd column of words? (Ensure you submit the flag with the acsc18{<CharacterCount>}
 
 ## Flag
-acsc18{71604}
+acsc18{68352}
 
 ## Hints
 1. The cut command allows you to pull out a particular column

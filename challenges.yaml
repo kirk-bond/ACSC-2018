@@ -493,7 +493,7 @@ name: osintfun
 category: OSINT
 value: 80
 description: Access Sandy Mills-Mills' private sftp server and find the key.
-flag: acsc18{90c17db65f1822eb2ecc9a087106de4a}
+flag: acsc2018{90c17db65f1822eb2ecc9a087106de4a}
 hints:
   - id: 1
     hint: Twitter
@@ -695,7 +695,7 @@ description: "How many characters are there in the 3rd column of words in linux2
 
 Logon to 52.33.202.4 with the username 'player' using the certificate in the link below"
 links: "https://challenge.acsc18.com/files/linux/player.pem"
-flag: acsc18{71604}
+flag: acsc18{68352}
 hints:
   - id: 1
     hint: The cut command allows you to pull out a particular column
